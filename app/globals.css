@@ -2,26 +2,39 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+@keyframes glowing {
+    0% {
+      box-shadow: 0 0 5px rgba(107, 33, 168, 0.7); /* Initial box-shadow color and size */
+    }
+    50% {
+      box-shadow: 0 0 20px rgba(107, 33, 168, 0.9); /* Intermediate box-shadow color and size */
+    }
+    100% {
+      box-shadow: 0 0 5px rgba(107, 33, 168, 0.7); /* Final box-shadow color and size */
+    }
   }
-}
+  
+  .glow-border {
+    animation: glowing 2s infinite; /* Adjust the duration as needed */
+    border: 2px solid #6b21a8; /* Set your border color and width */
+  }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
-}
+  /* ArticleComponent.css */
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+ 
+  
+
+  
+  
+  
+ 
