@@ -11,7 +11,7 @@ const projects = [
 	},
 	{
 		title: "Moon Bunny",
-		stack: "Phase JS | Valist",
+		stack: "Phaser JS | Valist",
 		description:
 			"Aliens? NO! We've got Bunnies in the moon! A fun little practice game made with Phaser JS. All you have to do is collect carrots and get a high score. EzzPzz 😄",
 		githubLink: "https://github.com/Vanshika-Rana/bunny-jump-game",
@@ -57,7 +57,7 @@ const Project: React.FC = () => {
 			<h1 className='text-white text-4xl lg:text-5xl font-bold  mt-12 '>
 				Projects
 			</h1>
-			<div className=' grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-6 p-4 sm:p-6 md:p-8 lg:p-12 xl:p-20 bg-slate-950 w-full min-h-screen '>
+			<div className='mt-12 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-6 p-4 sm:p-6 md:p-8 lg:p-12 xl:p-20 bg-slate-950 w-full min-h-screen '>
 				{projects.map((project, index) => (
 					<ProjectCard
 						key={index}
@@ -83,8 +83,8 @@ const ProjectCard: React.FC<{
 	return (
 		<div className='bg-slate-950 rounded-xl  p-4 glow-border flex flex-col justify-center'>
 			<h3 className='text-white text-3xl font-bold mb-2'>{title}</h3>
-			<p className='text-white text-sm font-light italic mb-2 uppercase'>{stack}</p>
-			<p className='text-gray-300 pr-6'>{description}</p>
+			<p className='text-white text-sm font-medium mb-2 uppercase'>{stack}</p>
+			<p className='text-gray-300 pr-6 font-light'>{description}</p>
 			<div className='mt-4 flex space-x-4'>
 				<a
 					href={githubLink}
@@ -98,7 +98,7 @@ const ProjectCard: React.FC<{
 					target='_blank'
 					rel='noopener noreferrer'
 					className='border-purple-800 border-2  text-white py-2 px-4 rounded-md transition duration-300 hover:bg-purple-600 hover:border-purple-800'>
-					Vercel
+					Website
 				</a>
 			</div>
 		</div>
