@@ -39,7 +39,7 @@ export default function Hero() {
 					Developer | Dev Rel
 				</h2>
 				<a
-					href='https://online.fliphtml5.com/obtmr/oblu/#p=1'
+					href='https://docs.google.com/document/d/1kN-1wNq0qTJXNOi0086lPSJnhOho4Zw1r8WB-mGpIo4/edit?usp=sharing'
 					target="_blank" // 
 					download='Vanshika_Rana_Resume.pdf'>
 					<button className='border-purple-800 border-2 rounded-lg font-bold text-white px-4 py-2 mt-4 text-sm md:text-lg lg:text-xl transition-all duration-300 ease-in-out hover:bg-purple-800 focus:outline-none focus:ring focus:border-purple-900'>
