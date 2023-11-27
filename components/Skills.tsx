@@ -52,7 +52,7 @@ const Skills: React.FC = () => {
 
 	return (
 		<div className='flex flex-col items-center bg-slate-950 p-4 w-full max-h-screen xl:h-80  justify-center'>
-			<h1 className='text-white text-4xl lg:text-5xl font-bold mb-4 mt-12'>Tech Skills</h1>
+			<h1 className='tracking-wider text-white text-4xl lg:text-5xl font-bold mb-4 mt-12'>Tech Skills</h1>
 			<div className='mt-6 grid grid-cols-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4 px-4'>
 				{skills.map((skill, index) => (
 					<SkillIcon
@@ -70,7 +70,7 @@ const SkillIcon: React.FC<Skill> = ({ name, icon }) => {
 	return (
 		<div className='flex flex-col items-center'>
 			{icon}
-			<span className='mt-2 text-white'>{name}</span>
+			<span className='tracking-wider mt-2 text-white'>{name}</span>
 		</div>
 	);
 };

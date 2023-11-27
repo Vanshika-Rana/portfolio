@@ -82,22 +82,22 @@ const ProjectCard: React.FC<{
 }> = ({ title, stack, description, githubLink, vercelLink }) => {
 	return (
 		<div className='bg-slate-950 rounded-xl  p-4 glow-border flex flex-col justify-center'>
-			<h3 className='text-white text-3xl font-bold mb-2'>{title}</h3>
-			<p className='text-white text-sm font-medium mb-2 uppercase'>{stack}</p>
-			<p className='text-gray-300 pr-6 font-light'>{description}</p>
+			<h3 className='tracking-wider text-white text-3xl font-bold mb-2'>{title}</h3>
+			<p className='tracking-wider text-white text-sm font-bold mb-2 uppercase'>{stack}</p>
+			<p className='tracking-wider text-gray-300 pr-6 font-light'>{description}</p>
 			<div className='mt-4 flex space-x-4'>
 				<a
 					href={githubLink}
 					target='_blank'
 					rel='noopener noreferrer'
-					className='bg-purple-700 text-white py-2 px-4 rounded-md transition duration-300 hover:bg-purple-600'>
+					className=' tracking-wider bg-purple-700 text-white py-2 px-4 rounded-md transition duration-300 hover:bg-purple-600'>
 					GitHub
 				</a>
 				<a
 					href={vercelLink}
 					target='_blank'
 					rel='noopener noreferrer'
-					className='border-purple-800 border-2  text-white py-2 px-4 rounded-md transition duration-300 hover:bg-purple-600 hover:border-purple-800'>
+					className='tracking-wider border-purple-800 border-2  text-white py-2 px-4 rounded-md transition duration-300 hover:bg-purple-600 hover:border-purple-800'>
 					Website
 				</a>
 			</div>

@@ -77,7 +77,7 @@ const ArticleComponent: React.FC = () => {
       className='top-articles bg-slate-950 w-full min-h-screen flex flex-col items-center justify-center'
       ref={vantaRef}
     >
-      <h1 className='text-white text-4xl lg:text-5xl font-bold mb-4 mt-12'>
+      <h1 className='tracking-wider text-white text-4xl lg:text-5xl font-bold mb-4 mt-12'>
         Top Articles
       </h1>
       <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2 gap-6 mt-12 mb-32 mx-10 xl:mx-32'>
@@ -88,16 +88,16 @@ const ArticleComponent: React.FC = () => {
             data-aos='fade-up'
             data-aos-delay={`${index * 100}`}
           >
-            <h2 className='text-purple-500 font-bold text-xl lg:text-2xl'>
+            <h2 className='tracking-wider text-purple-500 font-bold text-xl lg:text-2xl'>
               {article.title}
             </h2>
-            <p className='text-black text-md'>{article.content}</p>
+            <p className='tracking-wider mt-4 text-black text-md'>{article.content}</p>
 
             <a
               href={article.bloglink}
               target='_blank'
               rel='noopener noreferrer'
-              className='block border-purple-500 border-2 rounded-lg font-bold text-purple-500 hover:text-white px-4 py-2 mt-4 text-sm  lg:text-md transition-all duration-300 ease-in-out hover:bg-purple-500 focus:outline-none focus:ring focus:border-purple-900'
+              className='block tracking-wider border-purple-500 border-2 rounded-lg font-bold text-purple-500 hover:text-white px-4 py-2 mt-4 text-sm  lg:text-md transition-all duration-300 ease-in-out hover:bg-purple-500 focus:outline-none focus:ring focus:border-purple-900'
             >
               Read More
             </a>
