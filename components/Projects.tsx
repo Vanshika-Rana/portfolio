@@ -2,6 +2,15 @@ import React from "react";
 
 const projects = [
 	{
+		title: "Manodaya Homes",
+		stack: "Next JS | Tailwind CSS",
+		description:
+			"Website made for a tourist homestay business, with Google Form integration.",
+		githubLink: "https://github.com/Vanshika-Rana/bunny-jump-game",
+		vercelLink:
+			"https:://www.manodayahomes.com",
+	},
+	{
 		title: "SafeBet",
 		stack: "Solidity | Chainlink | Next JS | Tailwind CSS",
 		description:
@@ -9,14 +18,7 @@ const projects = [
 		githubLink: "https://github.com/Vanshika-Rana/safebet",
 		vercelLink: "https://safebet.vercel.app/",
 	},
-	{
-		title: "Moon Bunny",
-		stack: "Phaser JS | Valist",
-		description:
-			"Aliens? NO! We've got Bunnies in the moon! A fun little practice game made with Phaser JS. All you have to do is collect carrots and get a high score. EzzPzz 😄",
-		githubLink: "https://github.com/Vanshika-Rana/bunny-jump-game",
-		vercelLink: "https://gateway.valist.io/ipfs/bafybeibszyhygcrzcf2bdq4gyvbja4xt6nqcu44b4zsy64ghsu56xoc32m/",
-	},
+	
 	{
 		title: "Rcmnd",
 		stack: "Python | Streamlit",
@@ -33,14 +35,7 @@ const projects = [
 		githubLink: "https://github.com/Vanshika-Rana/storycreator-app",
 		vercelLink: "https://storycreator-app.vercel.app/",
 	},
-	{
-		title: "Tasteful Recipes",
-		stack: "React JS | API | Styled Components",
-		description:
-			"A web app that provides you with some amazing recipes with whatever ingredient you choose. Using Edamam API, it explores over 2M+ recipes.",
-		githubLink: "https://github.com/Vanshika-Rana/Tasteful-Recipes",
-		vercelLink: "https://hardcore-morse-8d4aa1.netlify.app/",
-	},
+
 	{
 		title: "Social Circle",
 		stack: "Solidity | Next JS | Tailwind CSS | Ethers",
@@ -82,9 +77,15 @@ const ProjectCard: React.FC<{
 }> = ({ title, stack, description, githubLink, vercelLink }) => {
 	return (
 		<div className='bg-slate-950 rounded-xl  p-4 glow-border flex flex-col justify-center'>
-			<h3 className='tracking-wider text-white text-3xl font-bold mb-2'>{title}</h3>
-			<p className='tracking-wider text-white text-sm font-bold mb-2 uppercase'>{stack}</p>
-			<p className='tracking-wider text-gray-300 pr-6 font-light'>{description}</p>
+			<h3 className='tracking-wider text-white text-3xl font-bold mb-2'>
+				{title}
+			</h3>
+			<p className='tracking-wider text-white text-sm font-bold mb-2 uppercase'>
+				{stack}
+			</p>
+			<p className='tracking-wider text-gray-300 pr-6 font-light'>
+				{description}
+			</p>
 			<div className='mt-4 flex space-x-4'>
 				<a
 					href={githubLink}
