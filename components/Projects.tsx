@@ -6,9 +6,9 @@ const projects = [
 		stack: "Next JS | Tailwind CSS",
 		description:
 			"Website made for a tourist homestay business, with Google Form integration.",
-		githubLink: "https://github.com/Vanshika-Rana/bunny-jump-game",
+		githubLink: "#",
 		vercelLink:
-			"https:://www.manodayahomes.com",
+			"https://www.manodayahomes.in/",
 	},
 	{
 		title: "SafeBet",
