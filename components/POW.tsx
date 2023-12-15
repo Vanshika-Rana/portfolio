@@ -1,16 +1,17 @@
+"use client";
 import React from "react";
 
 const POW = () => {
 	return (
-		<section className='py-10 bg-w sm:py-16 lg:py-24 z-40 relative'>
+		<section className='py-10 bg-w sm:py-16 lg:py-24 z-40 relative mx-8 lg:mx-2 mb-8'>
 			<div className='container mx-auto'>
-				<h2 className='text-3xl font-bold   text-black sm:text-4xl lg:text-5xl'>
+				<h2 className=' mb-6 font-bold   text-black text-5xl'>
 					Proof Of{" "}
 					<span className='block w-full  text-transparent font-bold bg-clip-text bg-gradient-to-r from-purple-500 to-purple-700 lg:inline'>
 						Community
 					</span>
 				</h2>
-				<p className='mb-20 text-lg text-gray-900'>
+				<p className='mb-12 text-lg text-gray-900'>
 					Giving back to the community that has given me strength to
 					strive in this industry.
 				</p>

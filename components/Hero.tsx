@@ -1,9 +1,11 @@
 "use client";
 
 import GLOBE from "vanta/src/vanta.globe";
+import Link from "next/link";
 import * as THREE from "three";
 import { useEffect, useRef, useState } from "react";
-
+import { FaGithub, FaLinkedinIn } from "react-icons/fa";
+import { BsTwitterX } from "react-icons/bs";
 export default function Hero() {
 	const [vantaEffect, setVantaEffect] = useState(0);
 	const vantaRef = useRef(null);
@@ -38,9 +40,35 @@ export default function Hero() {
 				<h2 className='tracking-wider text-xl sm:text-2xl md:text-2xl lg:text-2xl xl:text-3xl mt-4 font-semilight'>
 					Developer | Dev Rel
 				</h2>
+				<div className='flex space-x-6 my-4'>
+					<Link
+						href='https://github.com/Vanshika-Rana'
+						target='_blank'
+						passHref>
+						<p rel='noopener noreferrer'>
+							<FaGithub />
+						</p>
+					</Link>
+					<Link
+						href='https://twitter.com/aahiknsv'
+						target='_blank'
+						passHref>
+						<p rel='noopener noreferrer'>
+							<BsTwitterX />
+						</p>
+					</Link>
+					<Link
+						href='https://www.linkedin.com/in/vanshikarana/'
+						target='_blank'
+						passHref>
+						<p rel='noopener noreferrer'>
+							<FaLinkedinIn />
+						</p>
+					</Link>
+				</div>
 				<a
 					href='https://docs.google.com/document/d/1kN-1wNq0qTJXNOi0086lPSJnhOho4Zw1r8WB-mGpIo4/edit?usp=sharing'
-					target="_blank" // 
+					target='_blank' //
 					download='Vanshika_Rana_Resume.pdf'>
 					<button className='tracking-wider border-purple-800 border-2 rounded-lg font-medium text-white px-4 py-2 mt-4 text-sm md:text-lg lg:text-xl transition-all duration-300 ease-in-out hover:bg-purple-800 focus:outline-none focus:ring focus:border-purple-900'>
 						Download Resume
