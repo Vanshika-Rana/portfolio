@@ -2,13 +2,20 @@ import React from "react";
 
 const projects = [
 	{
+		title: "Moon Bunny",
+		stack: "Phaser JS ",
+		description:
+			"A fun little practice game made with Phaser JS. All you have to do is collect carrots and get a high score. EzzPzz 😄",
+		githubLink: "https://github.com/Vanshika-Rana/bunny-jump-game",
+		vercelLink: "https://moonbunny--aahiknsv.on.valist.io/",
+	},
+	{
 		title: "Manodaya Homes",
 		stack: "Next JS | Tailwind CSS",
 		description:
 			"Website made for a tourist homestay business, with Google Form integration.",
 		githubLink: "#",
-		vercelLink:
-			"https://www.manodayahomes.in/",
+		vercelLink: "https://www.manodayahomes.in/",
 	},
 	{
 		title: "SafeBet",
@@ -18,7 +25,7 @@ const projects = [
 		githubLink: "https://github.com/Vanshika-Rana/safebet",
 		vercelLink: "https://safebet.vercel.app/",
 	},
-	
+
 	{
 		title: "Rcmnd",
 		stack: "Python | Streamlit",
