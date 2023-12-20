@@ -20,7 +20,7 @@ const POW = () => {
 					<p className='shadow-2xl relative'>
 						<div className='h-full relative rounded-lg overflow-hidden shadow-slate-700 group'>
 							<div className='absolute -bottom-10 group-hover:top-0 left-0 w-full h-full group-hover:bg-purple-700 transition-all ease-in-out duration-500'>
-								<div className='w-full h-full p-5 relative'>
+								<div className='w-full h-4/5 p-5 relative'>
 									<div className='absolute bottom-0 group-hover:bottom-24 text-white text-left transition-all ease-in-out duration-500'>
 										<h2 className='text-2xl font-bold text-white mb-0 pb-1'>
 											Web3Conf GOA 2022
@@ -41,7 +41,7 @@ const POW = () => {
 					<p className='shadow-2xl relative'>
 						<div className='h-full relative rounded-lg overflow-hidden shadow-slate-700 group'>
 							<div className='absolute -bottom-10 group-hover:top-0 left-0 w-full h-full group-hover:bg-purple-700 transition-all ease-in-out duration-500'>
-								<div className='w-full h-full p-5 relative'>
+								<div className='w-full h-4/5 p-5 relative'>
 									<div className='absolute bottom-0 group-hover:bottom-24 text-white text-left transition-all ease-in-out duration-500'>
 										<h2 className='text-2xl font-bold text-white mt-6 mb-0 pb-1'>
 											HTL - Jaipur
@@ -62,7 +62,7 @@ const POW = () => {
 					<p className='shadow-2xl relative'>
 						<div className='h-full relative rounded-lg overflow-hidden shadow-slate-700 group'>
 							<div className='absolute -bottom-10 group-hover:top-0 left-0 w-full h-full group-hover:bg-purple-700 transition-all ease-in-out duration-500'>
-								<div className='w-full h-full p-5 relative'>
+								<div className='w-full h-4/5 p-5 relative'>
 									<div className='absolute bottom-0 group-hover:bottom-24 text-white text-left transition-all ease-in-out duration-500'>
 										<h2 className='text-2xl font-bold text-white mb-0 pb-1'>
 											HTL - Mumbai
@@ -83,7 +83,7 @@ const POW = () => {
 					<p className='shadow-2xl relative'>
 						<div className='h-full relative rounded-lg overflow-hidden shadow-slate-700 group'>
 							<div className='absolute -bottom-10 group-hover:top-0 left-0 w-full h-full group-hover:bg-purple-700 transition-all ease-in-out duration-500'>
-								<div className='w-full h-full p-5 relative'>
+								<div className='w-full h-4/5 p-5 relative'>
 									<div className='absolute bottom-0 group-hover:bottom-24 text-white text-left transition-all ease-in-out duration-500'>
 										<h2 className='text-2xl font-bold text-white mb-0 pb-1'>
 											FILBanglore 2022
@@ -104,7 +104,7 @@ const POW = () => {
 					<p className='shadow-2xl relative'>
 						<div className='h-full relative rounded-lg overflow-hidden shadow-slate-700 group'>
 							<div className='absolute -bottom-10 group-hover:top-0 left-0 w-full h-full group-hover:bg-purple-700 transition-all ease-in-out duration-500'>
-								<div className='w-full h-full p-5 relative'>
+								<div className='w-full h-4/5 p-5 relative'>
 									<div className='absolute bottom-0 group-hover:bottom-24 text-white text-left transition-all ease-in-out duration-500'>
 										<h2 className='text-2xl font-bold text-white mb-0 pb-1'>
 											Zeeve.io Panelist
@@ -125,7 +125,7 @@ const POW = () => {
 					<p className='shadow-2xl relative'>
 						<div className='h-full relative rounded-lg overflow-hidden shadow-slate-700 group'>
 							<div className='absolute -bottom-10 group-hover:top-0 left-0 w-full h-full group-hover:bg-purple-700 transition-all ease-in-out duration-500'>
-								<div className='w-full h-full p-5 relative'>
+								<div className='w-full h-4/5 p-5 relative'>
 									<div className='absolute bottom-0 group-hover:bottom-24 text-white text-left transition-all ease-in-out duration-500'>
 										<h2 className='text-2xl font-bold text-white mb-0 pb-1'>
 											Hack For India
@@ -147,7 +147,7 @@ const POW = () => {
 					<p className='shadow-2xl relative'>
 						<div className='h-full relative rounded-lg overflow-hidden shadow-slate-700 group'>
 							<div className='absolute -bottom-10 group-hover:top-0 left-0 w-full h-full group-hover:bg-purple-700 transition-all ease-in-out duration-500'>
-								<div className='w-full h-full p-5 relative'>
+								<div className='w-full h-4/5 p-5 relative'>
 									<div className='absolute bottom-0 group-hover:bottom-24 text-white text-left transition-all ease-in-out duration-500'>
 										<h2 className='text-2xl font-bold text-white mb-0 pb-1'>
 											Hack The Mountains
