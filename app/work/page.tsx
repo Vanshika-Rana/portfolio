@@ -1,4 +1,4 @@
-// app/work/page.tsx
+
 import {
     Briefcase,
     Users,
@@ -17,21 +17,21 @@ import {
             Professional Journey
           </h1>
   
-          {/* Main Timeline */}
+ 
           <div className="relative border-l border-zinc-700 sm:ml-4 ml-2">
   
-            {/* Upsurge Labs */}
+
             <div className="mb-12 relative sm:pl-8 pl-4">
               <div className="absolute sm:w-4 sm:h-4 w-3 h-3 bg-blue-300 rounded-full sm:-left-[9px] -left-[6px] top-1" />
               <div className="flex items-center gap-4 mb-4">
                 <Briefcase className="w-6 h-6 text-blue-300" />
-                {/* Responsive Title (Upsurge) */}
+
                 <h2 className="text-xl lg:text-2xl font-bold">Upsurge Labs</h2>
               </div>
               <div className="bg-zinc-800 rounded-xl p-6 mb-4 leading-relaxed">
                 <div className="flex justify-between items-start mb-4">
                   <div>
-                    {/* Responsive Subheading */}
+         
                     <h3 className="text-md lg:text-xl font-semibold">
                       Developer Advocate (Core Team)
                     </h3>
@@ -56,12 +56,12 @@ import {
               </div>
             </div>
   
-            {/* Instadapp */}
+
             <div className="mb-12 relative sm:pl-8 pl-4">
               <div className="absolute sm:w-4 sm:h-4 w-3 h-3 bg-blue-300 rounded-full sm:-left-[9px] -left-[6px] top-1" />
               <div className="flex items-center gap-4 mb-4">
                 <Code className="w-6 h-6 text-blue-300" />
-                {/* Updated to match Upsurge's text sizing */}
+         
                 <h2 className="text-xl lg:text-2xl font-bold">Instadapp</h2>
               </div>
               <div className="bg-zinc-800 rounded-xl p-6 mb-4 leading-relaxed">
@@ -97,7 +97,7 @@ import {
               </div>
             </div>
   
-            {/* Valist */}
+     
             <div className="mb-12 relative sm:pl-8 pl-4">
               <div className="absolute sm:w-4 sm:h-4 w-3 h-3 bg-blue-300 rounded-full sm:-left-[9px] -left-[6px] top-1" />
               <div className="flex items-center gap-4 mb-4">
@@ -137,7 +137,7 @@ import {
               </div>
             </div>
   
-            {/* Leadership & Community */}
+          
             <div className="mb-12 relative sm:pl-8 pl-4">
               <div className="absolute sm:w-4 sm:h-4 w-3 h-3 bg-blue-300 rounded-full sm:-left-[9px] -left-[6px] top-1" />
               <div className="flex items-center gap-4 mb-4">
@@ -147,7 +147,7 @@ import {
                 </h2>
               </div>
   
-              {/* H.E.R. DAO */}
+
               <div className="bg-zinc-800 rounded-xl p-6 mb-6 leading-relaxed">
                 <div className="flex justify-between items-start mb-4">
                   <div>
@@ -175,14 +175,14 @@ import {
             </div>
           </div>
   
-          {/* Additional Experience */}
+        
           <div className="mt-8 mb-12">
             <h2 className="text-xl lg:text-2xl font-bold mb-4">
               Additional Experience
             </h2>
             <div className="space-y-6">
   
-              {/* Ambodi XYZ */}
+    
               <div className="bg-zinc-800 rounded-xl p-6 leading-relaxed">
                 <div className="flex justify-between items-start mb-4">
                   <div>
@@ -204,7 +204,7 @@ import {
                 </ul>
               </div>
   
-              {/* Twilio Voices */}
+\
               <div className="bg-zinc-800 rounded-xl p-6 leading-relaxed">
                 <div className="flex justify-between items-start mb-4">
                   <div>

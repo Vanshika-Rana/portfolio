@@ -4,20 +4,20 @@ import Link from "next/link";
 export default function Home() {
   return (
     <main className="max-w-5xl mx-auto px-4 py-8 text-white">
-      {/* Intro Section */}
+    
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16 items-start">
-        {/* Image */}
+
         <div className="flex justify-center md:justify-start">
           <Image
             src="/images/avatar.jpeg"
             alt="Vanshika Rana"
-            width={200}  // Adjust size as needed
+            width={200}  
             height={200}
             className="rounded-lg object-cover w-full max-w-[200px]"
           />
         </div>
 
-        {/* Text */}
+
         <div className="md:col-span-2 flex flex-col justify-center">
           <p className="text-lg mb-2">Hey 👋🏻 This is ...</p>
           <h1 className="text-4xl font-bold mb-4">Vanshika Rana</h1>
@@ -44,11 +44,11 @@ export default function Home() {
         </div>
       </div>
 
-      {/* What I've Been Up To Section */}
+
       <section>
         <h2 className="text-2xl font-bold mb-6">What I&apos;ve Been Upto...</h2>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-          {/* Card 1 */}
+ 
           <div className="bg-zinc-800 p-6 rounded-xl">
             <div className="flex justify-between items-start mb-4">
               <h3 className="text-lg font-semibold">Professional Journey</h3>
@@ -62,7 +62,7 @@ export default function Home() {
             </p>
           </div>
 
-          {/* Card 2 */}
+
           <div className="bg-zinc-800 p-6 rounded-xl">
             <div className="flex justify-between items-start mb-4">
               <h3 className="text-lg font-semibold">Personal Projects</h3>

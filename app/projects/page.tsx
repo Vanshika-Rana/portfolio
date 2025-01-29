@@ -1,4 +1,4 @@
-// app/projects/page.tsx
+
 import Link from "next/link";
 import {
   Code,
@@ -98,7 +98,7 @@ export default function Projects() {
                          hover:border-blue-500 transition-all duration-300 
                          hover:shadow-2xl hover:shadow-blue-900/20"
             >
-              {/* Title + Icon + Links */}
+ 
               <div className="flex items-start justify-between mb-4">
                 <div className="flex items-center gap-3">
                   <div className="p-2 bg-zinc-800 rounded-lg text-blue-400">
@@ -124,7 +124,7 @@ export default function Projects() {
                 </div>
               </div>
 
-              {/* Tech Badges */}
+         
               <div className="mb-4 flex flex-wrap gap-2">
                 {project.tech.map((tech, techIndex) => (
                   <span
@@ -136,12 +136,12 @@ export default function Projects() {
                 ))}
               </div>
 
-              {/* Description */}
+       
               <p className="text-zinc-400 text-sm sm:text-base mb-6">
                 {project.description}
               </p>
 
-              {/* Hover "View Project" button */}
+          
               <div className="absolute bottom-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity">
                 <Link
                   href={project.links.website}
@@ -168,7 +168,7 @@ export default function Projects() {
           ))}
         </div>
 
-        {/* Back to Home */}
+
         <div className="mt-12 text-center">
           <Link
             href="/"

@@ -1,10 +1,10 @@
-// components/Resume.tsx
+
 import React from "react";
 
 const Resume: React.FC = () => {
   return (
     <section className="mx-auto max-w-4xl w-full px-4 py-8 text-white">
-      {/* Responsive container */}
+
       <div className="relative rounded-md overflow-hidden border border-zinc-800 h-[70vh] sm:h-[80vh]">
         <iframe
           src="/vanshika_resume.pdf"
@@ -14,7 +14,7 @@ const Resume: React.FC = () => {
         />
       </div>
 
-      {/* Optional fallback link */}
+
       <p className="text-center text-sm text-zinc-400 mt-4">
         Having trouble viewing?{" "}
         <a

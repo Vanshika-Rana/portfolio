@@ -11,7 +11,7 @@ export default function About() {
           Little About Me ...
         </h1>
 
-        {/* Background */}
+       
         <div className="mb-10 space-y-4">
           <div className="flex items-center gap-3">
             <GraduationCap className="w-6 h-6 text-blue-300" />
@@ -23,7 +23,7 @@ export default function About() {
           </p>
         </div>
 
-        {/* Tech Toolkit */}
+   
         <div className="bg-zinc-800 rounded-xl p-6 mb-12">
           <h2 className="text-xl lg:text-2xl font-bold mb-6">Tech Toolkit</h2>
           <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
@@ -41,7 +41,7 @@ export default function About() {
           </div>
         </div>
 
-        {/* Development Philosophy */}
+    
         <div className="space-y-8">
           <div className="flex items-start gap-4">
             <Code2 className="w-8 h-8 text-blue-300 flex-shrink-0" />
@@ -71,7 +71,7 @@ export default function About() {
         </div>
       </div>
 
-      {/* Let's Connect */}
+
       <div className="border-t border-zinc-800 pt-8">
         <h2 className="text-2xl font-bold mb-6">Let&apos;s Connect</h2>
         <div className="flex flex-wrap gap-4">
@@ -102,7 +102,7 @@ export default function About() {
   );
 }
 
-// SVG Icons
+
 function TwitterIcon(props: any) {
   return (
     <svg

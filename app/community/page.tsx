@@ -1,4 +1,4 @@
-// app/community/page.tsx
+
 "use client"
 import { Medal, Mic, Users, BookOpen } from 'lucide-react';
 import Link from 'next/link';
@@ -10,13 +10,13 @@ const SocialPost = ({ platform, url }: { platform: string; url: string }) => {
     return (
       <div className="bg-zinc-900 rounded-xl p-0 border border-zinc-800 hover:border-blue-300 transition-all overflow-hidden twitter-embed">
         <blockquote className="twitter-tweet" data-theme="dark">
-          {/* Make sure to use twitter.com links here */}
+   
           <a href={url}></a>
         </blockquote>
       </div>
     );
   } else {
-    // Simple iframe approach for LinkedIn
+
     return (
       <div className="bg-zinc-900 rounded-xl p-0 border border-zinc-800 hover:border-blue-300 transition-all overflow-hidden">
         <iframe
@@ -34,21 +34,18 @@ const SocialPost = ({ platform, url }: { platform: string; url: string }) => {
 };
 
 export default function Community() {
-  // Manually invoke widget parsing after scripts have loaded
+  
   useEffect(() => {
-    // Twitter
+
     if (typeof window !== 'undefined' && (window as any).twttr) {
       (window as any).twttr.widgets.load();
     }
-    // If you use LinkedIn’s official script approach:
-    // if (typeof window !== 'undefined' && (window as any).IN) {
-    //   (window as any).IN.parse();
-    // }
+   
   }, []);
 
  
 
-  // Make sure Twitter links use twitter.com instead of x.com
+
   const socialPosts = [
     {
       platform: "twitter",
@@ -96,18 +93,12 @@ export default function Community() {
   return (
     <main className="text-white max-w-6xl mx-auto px-4 py-8 
     h-screen">
-      {/* Load Twitter’s script */}
+     
       <Script 
         src="https://platform.twitter.com/widgets.js" 
         strategy="lazyOnload" 
       />
-      {/* If using LinkedIn official script, uncomment and configure
-      <Script
-        src="https://platform.linkedin.com/in.js"
-        strategy="lazyOnload"
-      >
-        {`lang: en_US`}
-      </Script> */}
+      
       
       <div className="mb-16">
       <h1 className="text-4xl font-bold mb-8 bg-gradient-to-r from-white to-gray-900 bg-clip-text text-transparent">
@@ -115,7 +106,7 @@ export default function Community() {
         </h1>
        
 
-{/* Social Proof Section */}
+
 <div className="mb-16">
   
 
@@ -128,10 +119,6 @@ export default function Community() {
     ))}
   </div>
 </div>
-
-
-       
-
         <div className="mt-12 text-center">
           <Link 
             href="/" 

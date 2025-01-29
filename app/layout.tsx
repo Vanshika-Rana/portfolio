@@ -18,7 +18,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${inter.className} bg-[#131313]`}>
-        {/* Hamburger button for small screens (shows when sidebar is closed) */}
+     
         {!sidebarOpen && (
           <button
             className="md:hidden text-white p-2 absolute top-4 left-4 z-50"
@@ -29,7 +29,7 @@ export default function RootLayout({
           </button>
         )}
 
-        {/* Close (X) button for small screens (shows when sidebar is open) */}
+     
         {sidebarOpen && (
           <button
             className="md:hidden text-white p-2 absolute top-4 right-4 z-50"
@@ -40,7 +40,7 @@ export default function RootLayout({
           </button>
         )}
 
-        {/* Overlay (click to close sidebar on mobile) */}
+    
         <div
           className={`
             fixed inset-0 bg-black bg-opacity-50 z-30 
@@ -52,7 +52,7 @@ export default function RootLayout({
           aria-hidden="true"
         />
 
-        {/* Sidebar container */}
+        
         <aside
           className={`
             fixed top-0 left-0 h-full w-64 bg-[#1C1C1C] p-6 
@@ -64,7 +64,7 @@ export default function RootLayout({
           <Sidebar />
         </aside>
 
-        {/* Main Content, with left margin on md+ to avoid overlap */}
+    
         <main className="md:ml-64 p-12 flex items-center justify-center min-h-screen">
           {children}
         </main>
