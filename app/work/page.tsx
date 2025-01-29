@@ -204,7 +204,6 @@ import {
                 </ul>
               </div>
   
-\
               <div className="bg-zinc-800 rounded-xl p-6 leading-relaxed">
                 <div className="flex justify-between items-start mb-4">
                   <div>

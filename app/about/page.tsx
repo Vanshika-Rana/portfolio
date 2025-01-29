@@ -5,7 +5,7 @@ import { Briefcase, GraduationCap, Code2, Globe, Terminal } from "lucide-react";
 
 export default function About() {
   return (
-    <main className="text-white max-w-5xl mx-auto px-4 py-8">
+    <main className="text-white max-w-5xl mx-auto px-2 lg:px-4 py-8">
       <div className="mb-16">
         <h1 className="text-3xl lg:text-4xl font-bold mb-8 bg-gradient-to-r from-white to-gray-900 bg-clip-text text-transparent">
           Little About Me ...
@@ -26,7 +26,7 @@ export default function About() {
    
         <div className="bg-zinc-800 rounded-xl p-6 mb-12">
           <h2 className="text-xl lg:text-2xl font-bold mb-6">Tech Toolkit</h2>
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             {["Next JS", "Typescript", "Python", "ML", "Solidity", "Node JS"].map(
               (skill) => (
                 <div
