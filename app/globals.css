@@ -2,39 +2,32 @@
 @tailwind components;
 @tailwind utilities;
 
-@keyframes glowing {
-    0% {
-      box-shadow: 0 0 5px rgba(107, 33, 168, 0.7); /* Initial box-shadow color and size */
-    }
-    50% {
-      box-shadow: 0 0 20px rgba(107, 33, 168, 0.9); /* Intermediate box-shadow color and size */
-    }
-    100% {
-      box-shadow: 0 0 5px rgba(107, 33, 168, 0.7); /* Final box-shadow color and size */
-    }
-  }
-  
-  .glow-border {
-    animation: glowing 2s infinite; /* Adjust the duration as needed */
-    border: 2px solid #6b21a8; /* Set your border color and width */
-  }
-
-  /* ArticleComponent.css */
-  @keyframes fadeInUp {
-    from {
-      opacity: 0;
-      transform: translateY(20px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-  
- 
-  
+body{
+  background-color: #111111;
+}
 
   
   
-  
+  /* Twitter embeds */
+.twitter-embed {
+  min-height: 400px;
+}
+
+.twitter-tweet {
+  margin: 0 !important;
+  width: 100% !important;
+}
+
+/* LinkedIn embeds */
+.linkedin-embed {
+  min-height: 400px;
+  position: relative;
+}
+
+.linkedin-embed iframe {
+  width: 100% !important;
+  min-height: 400px !important;
+  border: none !important;
+  border-radius: 0 0 12px 12px;
+}
  

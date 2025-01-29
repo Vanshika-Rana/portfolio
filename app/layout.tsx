@@ -1,52 +1,74 @@
-import type { Metadata } from "next";
-import { Inter } from "next/font/google";
-import { Space_Mono } from "next/font/google";
-import { Source_Code_Pro } from "next/font/google";
-import { IBM_Plex_Sans } from "next/font/google";
+"use client";
+
 import "./globals.css";
-import { AOSInit } from "./aos";
+import { Inter } from "next/font/google";
+import { Sidebar } from "@/components/Sidebar";
+import { useState } from "react";
+import { Menu, X } from "lucide-react";
 
 const inter = Inter({ subsets: ["latin"] });
-const spaceMono = Space_Mono({
-	weight: ["400", "700"],
-	style: ["normal", "italic"],
-	subsets: ["latin"],
-	display: "swap",
-});
-const sourceCode= Source_Code_Pro({
-	weight: ["200","300","400","500","600", "700","800","900"],
-	style: ["normal", "italic"],
-	subsets: ["latin"],
-	display: "swap",
-});
-const ibmPlex= IBM_Plex_Sans({
-	weight: ["100","200", "300","400","500","600","700"],
-	style: ["normal", "italic"],
-	subsets: ["latin"],
-	display: "swap",
-});
-export const metadata: Metadata = {
-	title: 'Vanshika Rana - Portfolio',
-	description: 'Developer | Dev Rel',
-  }
 
 export default function RootLayout({
-	children,
+  children,
 }: {
-	children: React.ReactNode;
+  children: React.ReactNode;
 }) {
-	return (
-		<html lang='en'>
-			<AOSInit />
-			<body className={ibmPlex.className}>{children}</body>
-		</html>
-	);
+  const [sidebarOpen, setSidebarOpen] = useState(false);
+
+  return (
+    <html lang="en">
+      <body className={`${inter.className} bg-[#131313]`}>
+        {/* Hamburger button for small screens (shows when sidebar is closed) */}
+        {!sidebarOpen && (
+          <button
+            className="md:hidden text-white p-2 absolute top-4 left-4 z-50"
+            onClick={() => setSidebarOpen(true)}
+            aria-label="Open Sidebar"
+          >
+            <Menu className="w-6 h-6" />
+          </button>
+        )}
+
+        {/* Close (X) button for small screens (shows when sidebar is open) */}
+        {sidebarOpen && (
+          <button
+            className="md:hidden text-white p-2 absolute top-4 right-4 z-50"
+            onClick={() => setSidebarOpen(false)}
+            aria-label="Close Sidebar"
+          >
+            <X className="w-6 h-6" />
+          </button>
+        )}
+
+        {/* Overlay (click to close sidebar on mobile) */}
+        <div
+          className={`
+            fixed inset-0 bg-black bg-opacity-50 z-30 
+            md:hidden 
+            transition-opacity duration-300
+            ${sidebarOpen ? "opacity-100 visible" : "opacity-0 invisible"}
+          `}
+          onClick={() => setSidebarOpen(false)}
+          aria-hidden="true"
+        />
+
+        {/* Sidebar container */}
+        <aside
+          className={`
+            fixed top-0 left-0 h-full w-64 bg-[#1C1C1C] p-6 
+            transition-transform duration-300 z-40
+            ${sidebarOpen ? "translate-x-0" : "-translate-x-full"}
+            md:translate-x-0
+          `}
+        >
+          <Sidebar />
+        </aside>
+
+        {/* Main Content, with left margin on md+ to avoid overlap */}
+        <main className="md:ml-64 p-12 flex items-center justify-center min-h-screen">
+          {children}
+        </main>
+      </body>
+    </html>
+  );
 }
-
-
-
-
-
-
-
-

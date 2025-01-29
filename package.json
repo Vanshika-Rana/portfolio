@@ -10,9 +10,10 @@
   },
   "dependencies": {
     "aos": "^2.3.4",
-    "next": "14.0.3",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
+    "lucide-react": "^0.474.0",
+    "next": "^15.1.6",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
     "react-icons": "^4.12.0",
     "react-slick": "^0.29.0",
     "slick-carousel": "^1.8.1",
