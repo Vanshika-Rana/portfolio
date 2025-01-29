@@ -73,7 +73,7 @@ export default function About() {
 
       {/* Let's Connect */}
       <div className="border-t border-zinc-800 pt-8">
-        <h2 className="text-2xl font-bold mb-6">Let's Connect</h2>
+        <h2 className="text-2xl font-bold mb-6">Let&apos;s Connect</h2>
         <div className="flex flex-wrap gap-4">
           <Link
             href="https://x.com/aahiknsv"

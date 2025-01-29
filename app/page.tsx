@@ -46,7 +46,7 @@ export default function Home() {
 
       {/* What I've Been Up To Section */}
       <section>
-        <h2 className="text-2xl font-bold mb-6">What I've Been Upto...</h2>
+        <h2 className="text-2xl font-bold mb-6">What I&apos;ve Been Upto...</h2>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
           {/* Card 1 */}
           <div className="bg-zinc-800 p-6 rounded-xl">

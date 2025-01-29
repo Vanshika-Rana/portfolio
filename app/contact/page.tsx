@@ -7,7 +7,7 @@ export default function ContactPage() {
   return (
     <main className="flex flex-col items-center justify-center max-w-3xl mx-auto px-4 py-16 text-white min-h-screen">
       <h1 className="text-3xl sm:text-4xl font-bold mb-4 bg-gradient-to-r from-white to-gray-600 bg-clip-text text-transparent">
-        Let’s Connect!
+        Let&apos;s Connect!
       </h1>
       <p className="text-zinc-400 text-center mb-8 text-sm sm:text-base leading-relaxed">
         Whether you have a burning question, a nifty project, or just want to say
