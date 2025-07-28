@@ -21,10 +21,10 @@ const SocialPost = ({
 		if (activityId) {
 			const embedUrl = `https://www.linkedin.com/embed/feed/update/urn:li:activity:${activityId}`;
 			return (
-				<div className='bg-zinc-900 rounded-xl overflow-hidden border border-zinc-800 hover:border-blue-300 transition-all min-w-[320px] shrink-0'>
+				<div className='bg-zinc-900 rounded-xl overflow-hidden border border-zinc-800 hover:border-blue-300 transition-all min-w-[280px] sm:min-w-[320px] shrink-0'>
 					<iframe
 						src={embedUrl}
-						height='550'
+						height='400'
 						width='100%'
 						frameBorder='0'
 						allowFullScreen
@@ -35,7 +35,7 @@ const SocialPost = ({
 		} else {
 			// Fallback if URL parsing fails
 			return (
-				<div className='bg-zinc-900 rounded-xl border border-zinc-800 hover:border-blue-300 transition-all min-w-[320px] shrink-0 p-4'>
+				<div className='bg-zinc-900 rounded-xl border border-zinc-800 hover:border-blue-300 transition-all min-w-[280px] sm:min-w-[320px] shrink-0 p-4'>
 					<div className='text-white font-semibold mb-2'>{title}</div>
 					<a
 						href={url}
@@ -50,22 +50,22 @@ const SocialPost = ({
 	} else if (platform === "twitter") {
 		return (
 			<div
-				className='bg-zinc-900 rounded-xl border border-zinc-800 hover:border-blue-300 transition-all overflow-hidden twitter-embed min-w-[320px] shrink-0'
+				className='bg-zinc-900 rounded-xl border border-zinc-800 hover:border-blue-300 transition-all overflow-hidden twitter-embed min-w-[280px] sm:min-w-[320px] shrink-0'
 				style={{ minHeight: "200px" }}>
 				<blockquote
 					className='twitter-tweet'
 					data-theme='dark'
 					data-dnt='true'
-					data-width='320'>
+					data-width='280'>
 					<p>{title}</p>
 					<a href={url}>View Tweet</a>
 				</blockquote>
-				<div className='p-4 text-center'>
+				<div className='p-3 sm:p-4 text-center'>
 					<a
 						href={url}
 						target='_blank'
 						rel='noopener noreferrer'
-						className='text-blue-400 hover:text-blue-300 underline'>
+						className='text-blue-400 hover:text-blue-300 underline text-sm'>
 						{title} - View on X
 					</a>
 				</div>
@@ -82,16 +82,19 @@ export default function ContentHub() {
 	const scrollLeft = (category: string) => {
 		const container = scrollRefs.current[category];
 		if (container) {
-			container.scrollBy({ left: -300, behavior: "smooth" });
+			const scrollAmount = window.innerWidth < 640 ? -200 : -300;
+			container.scrollBy({ left: scrollAmount, behavior: "smooth" });
 		}
 	};
 
 	const scrollRight = (category: string) => {
 		const container = scrollRefs.current[category];
 		if (container) {
-			container.scrollBy({ left: 300, behavior: "smooth" });
+			const scrollAmount = window.innerWidth < 640 ? 200 : 300;
+			container.scrollBy({ left: scrollAmount, behavior: "smooth" });
 		}
 	};
+
 	useEffect(() => {
 		// Add a longer delay to ensure DOM is ready
 		const timer = setTimeout(() => {
@@ -234,43 +237,45 @@ export default function ContentHub() {
 	];
 
 	return (
-		<main className='text-white max-w-5xl mx-auto px-4 py-10'>
+		<main className='text-white w-full max-w-7xl mx-auto px-3 sm:px-4 lg:px-6 py-6 sm:py-8 lg:py-10'>
 			<Script
 				src='https://platform.twitter.com/widgets.js'
 				strategy='lazyOnload'
 			/>
 
-			<h1 className='text-4xl font-bold mb-8 bg-gradient-to-r from-white to-gray-900 bg-clip-text text-transparent'>
-				Content Hub
-			</h1>
-			<p className='text-zinc-400 mb-12 text-lg max-w-2xl'>
-				This is a living archive of the stuff I&apos;ve published -
-				carousels, drops, docs, deep dives, tweets, experiments. I have
-				added just my latest posts to my digital garden right now, will
-				be growing more. Built to scroll, not search.
-			</p>
+			<div className='mb-8 sm:mb-12'>
+				<h1 className='text-2xl sm:text-3xl lg:text-4xl font-bold mb-4 sm:mb-6 lg:mb-8 bg-gradient-to-r from-white to-gray-900 bg-clip-text text-transparent'>
+					Content Hub
+				</h1>
+				<p className='text-zinc-400 text-sm sm:text-base lg:text-lg max-w-full sm:max-w-2xl lg:max-w-3xl leading-relaxed'>
+					This is a living archive of the stuff I&apos;ve published -
+					carousels, drops, docs, deep dives, tweets, experiments. I
+					have added just my latest posts to my digital garden right
+					now, will be growing more. Built to scroll, not search.
+				</p>
+			</div>
 
-			<div className='space-y-16'>
+			<div className='space-y-10 sm:space-y-12 lg:space-y-16'>
 				{content.map((section) => (
 					<div key={section.category}>
-						<div className='flex items-center justify-between mb-4'>
-							<h2 className='text-2xl font-semibold text-blue-300'>
+						<div className='flex items-start sm:items-center justify-between mb-3 sm:mb-4 gap-2'>
+							<h2 className='text-lg sm:text-xl lg:text-2xl font-semibold text-blue-300 leading-tight flex-1 pr-2'>
 								{section.category}
 							</h2>
-							<div className='flex items-center gap-2'>
+							<div className='flex items-center gap-1 sm:gap-2 flex-shrink-0'>
 								<button
 									onClick={() => scrollLeft(section.category)}
-									className='p-2 rounded-full bg-zinc-800 hover:bg-zinc-700 border border-zinc-600 hover:border-blue-300 transition-all'
+									className='p-1.5 sm:p-2 rounded-full bg-zinc-800 hover:bg-zinc-700 border border-zinc-600 hover:border-blue-300 transition-all'
 									aria-label='Scroll left'>
-									<ChevronLeft className='w-4 h-4 text-zinc-400' />
+									<ChevronLeft className='w-3 h-3 sm:w-4 sm:h-4 text-zinc-400' />
 								</button>
 								<button
 									onClick={() =>
 										scrollRight(section.category)
 									}
-									className='p-2 rounded-full bg-zinc-800 hover:bg-zinc-700 border border-zinc-600 hover:border-blue-300 transition-all'
+									className='p-1.5 sm:p-2 rounded-full bg-zinc-800 hover:bg-zinc-700 border border-zinc-600 hover:border-blue-300 transition-all'
 									aria-label='Scroll right'>
-									<ChevronRight className='w-4 h-4 text-zinc-400' />
+									<ChevronRight className='w-3 h-3 sm:w-4 sm:h-4 text-zinc-400' />
 								</button>
 							</div>
 						</div>
@@ -278,7 +283,7 @@ export default function ContentHub() {
 							ref={(el) => {
 								scrollRefs.current[section.category] = el;
 							}}
-							className='flex space-x-4 overflow-x-auto pb-2 scroll-smooth scrollbar-hide'
+							className='flex space-x-3 sm:space-x-4 overflow-x-auto pb-2 scroll-smooth scrollbar-hide'
 							style={{
 								scrollbarWidth: "none",
 								msOverflowStyle: "none",
@@ -296,11 +301,11 @@ export default function ContentHub() {
 										key={idx}
 										href={item.url}
 										target='_blank'
-										className='min-w-[280px] shrink-0 border border-zinc-700 hover:border-blue-300 transition rounded-lg p-4 bg-zinc-900'>
-										<div className='text-white font-semibold text-md mb-1'>
+										className='min-w-[250px] sm:min-w-[280px] lg:min-w-[300px] shrink-0 border border-zinc-700 hover:border-blue-300 transition rounded-lg p-3 sm:p-4 bg-zinc-900 group'>
+										<div className='text-white font-semibold text-sm sm:text-base mb-1 sm:mb-2 leading-tight group-hover:text-blue-100 transition-colors'>
 											{item.title}
 										</div>
-										<div className='text-sm text-zinc-400'>
+										<div className='text-xs sm:text-sm text-zinc-400'>
 											{item.type === "LinkedIn Video"
 												? "linkedin.com"
 												: new URL(
