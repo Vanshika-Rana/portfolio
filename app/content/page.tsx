@@ -162,6 +162,41 @@ export default function ContentHub() {
 			],
 		},
 		{
+			category: "Payman Chronicles - something I loved working on!",
+			items: [
+				{
+					title: "Issue #6",
+					url: "https://www.linkedin.com/feed/update/urn:li:ugcPost:7351218926422290432",
+					type: "LinkedIn Video",
+				},
+				{
+					title: "Issue #5",
+					url: "https://www.linkedin.com/feed/update/urn:li:ugcPost:7348393544354582531",
+					type: "LinkedIn Video",
+				},
+				{
+					title: "Issue #4",
+					url: "https://www.linkedin.com/feed/update/urn:li:ugcPost:7345833534302973954",
+					type: "LinkedIn Video",
+				},
+				{
+					title: "Issue #3",
+					url: "https://www.linkedin.com/feed/update/urn:li:ugcPost:7343292394924142592",
+					type: "LinkedIn Video",
+				},
+				{
+					title: "Issue #2",
+					url: "https://www.linkedin.com/feed/update/urn:li:ugcPost:7337587507888365569",
+					type: "LinkedIn Video",
+				},
+				{
+					title: "Issue #1",
+					url: "https://www.linkedin.com/feed/update/urn:li:ugcPost:7333797552082821120",
+					type: "LinkedIn Video",
+				},
+			],
+		},
+		{
 			category: "Social Media Presence",
 			items: [
 				{
@@ -196,41 +231,6 @@ export default function ContentHub() {
 				},
 			],
 		},
-		{
-			category: "Payman Chronicles",
-			items: [
-				{
-					title: "Issue #6",
-					url: "https://www.linkedin.com/feed/update/urn:li:activity:7351218927282130944",
-					type: "LinkedIn Video",
-				},
-				{
-					title: "Issue #5",
-					url: "https://www.linkedin.com/feed/update/urn:li:activity:7348393545130528771",
-					type: "LinkedIn Video",
-				},
-				{
-					title: "Issue #4",
-					url: "https://www.linkedin.com/feed/update/urn:li:activity:7345833535234023424",
-					type: "LinkedIn Video",
-				},
-				{
-					title: "Issue #3",
-					url: "https://www.linkedin.com/feed/update/urn:li:activity:7343292395779670016",
-					type: "LinkedIn Video",
-				},
-				{
-					title: "Issue #2",
-					url: "https://www.linkedin.com/feed/update/urn:li:activity:7337587509012373505",
-					type: "LinkedIn Video",
-				},
-				{
-					title: "Issue #1",
-					url: "https://www.linkedin.com/feed/update/urn:li:activity:7333797553022320641",
-					type: "LinkedIn Video",
-				},
-			],
-		},
 	];
 
 	return (
@@ -245,8 +245,9 @@ export default function ContentHub() {
 			</h1>
 			<p className='text-zinc-400 mb-12 text-lg max-w-2xl'>
 				This is a living archive of the stuff I&apos;ve published -
-				carousels, drops, docs, deep dives, tweets, experiments. Built
-				to scroll, not search.
+				carousels, drops, docs, deep dives, tweets, experiments. I have
+				added just my latest posts to my digital garden right now, will
+				be growing more. Built to scroll, not search.
 			</p>
 
 			<div className='space-y-16'>
@@ -283,14 +284,7 @@ export default function ContentHub() {
 								msOverflowStyle: "none",
 							}}>
 							{section.items.map((item, idx) =>
-								item.type === "LinkedIn Video" ? (
-									<SocialPost
-										key={idx}
-										platform='linkedin-video'
-										url={item.url}
-										title={item.title}
-									/>
-								) : item.type === "Twitter" ? (
+								item.type === "Twitter" ? (
 									<SocialPost
 										key={idx}
 										platform='twitter'
@@ -307,10 +301,14 @@ export default function ContentHub() {
 											{item.title}
 										</div>
 										<div className='text-sm text-zinc-400'>
-											{new URL(item.url).hostname.replace(
-												"www.",
-												""
-											)}
+											{item.type === "LinkedIn Video"
+												? "linkedin.com"
+												: new URL(
+														item.url
+												  ).hostname.replace(
+														"www.",
+														""
+												  )}
 										</div>
 									</Link>
 								)
