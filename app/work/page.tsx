@@ -1,4 +1,3 @@
-
 import {
     Briefcase,
     Users,
@@ -20,6 +19,30 @@ import {
  
           <div className="relative border-l border-zinc-700 sm:ml-4 ml-2">
   
+            <div className="mb-12 relative sm:pl-8 pl-4">
+              <div className="absolute sm:w-4 sm:h-4 w-3 h-3 bg-blue-300 rounded-full sm:-left-[9px] -left-[6px] top-1" />
+              <div className="flex items-center gap-4 mb-4">
+                <Briefcase className="w-6 h-6 text-blue-300" />
+                <h2 className="text-xl lg:text-2xl font-bold">Payman</h2>
+              </div>
+              <div className="bg-zinc-800 rounded-xl p-6 mb-4 leading-relaxed">
+                <div className="flex justify-between items-start mb-4">
+                  <div>
+                    <h3 className="text-md lg:text-xl font-semibold">DevRel Engineer</h3>
+                    <p className="text-zinc-400 text-sm lg:text-md">
+                      Remote | March 2025 – Present
+                    </p>
+                  </div>
+                  <Rocket className="w-6 h-6 text-blue-300" />
+                </div>
+                <ul className="list-disc pl-6 space-y-3 text-zinc-300 text-sm lg:text-md">
+                  <li>Led brand, content, and growth strategy for Payman’s AI-first payment infra</li>
+                  <li>Shaped product positioning and launched the agent-focused SDK and Payman Agent</li>
+                  <li>Built dev-facing demos like Telegram bots and resume coaches with real payouts</li>
+                  <li>Wrote no-fluff docs, ran campaigns, and helped bring Payman to enterprise teams</li>
+                </ul>
+              </div>
+            </div>
 
             <div className="mb-12 relative sm:pl-8 pl-4">
               <div className="absolute sm:w-4 sm:h-4 w-3 h-3 bg-blue-300 rounded-full sm:-left-[9px] -left-[6px] top-1" />
@@ -36,7 +59,7 @@ import {
                       Developer Advocate (Core Team)
                     </h3>
                     <p className="text-zinc-400 text-sm lg:text-md">
-                      Bengaluru, KA | June 2024 – Present
+                      Bengaluru, KA | June 2024 – Jan 2025
                     </p>
                   </div>
                   <Rocket className="w-6 h-6 text-blue-300" />
@@ -240,4 +263,3 @@ import {
       </main>
     );
   }
-  
