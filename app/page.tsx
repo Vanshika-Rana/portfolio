@@ -19,7 +19,7 @@ import {
 const experience = [
   {
     company: "Optexity",
-    role: "Developer Advocate",
+    role: "Developer Relations Engineer",
     period: "Jan 2026 – Present",
     narrative:
       "Building the DevRel function from zero. Defining the content engine, community channels, and developer onboarding journey from first signup to first successful integration. Shipping tutorials, API guides, and walkthroughs while running growth campaigns across Twitter/X, Discord, and LinkedIn.",
