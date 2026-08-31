@@ -1,6 +1,7 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
+import { motion, Variants } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import {
@@ -10,19 +11,41 @@ import {
   X,
   ChevronDown,
   Newspaper,
+  Github,
+  Linkedin,
+  Twitter,
+  Youtube,
 } from "lucide-react";
 
 /* ================================================================
    DATA
    ================================================================ */
 
-const experience = [
+type ExperienceItem = {
+  company: string;
+  url?: string;
+  role: string;
+  period: string;
+  narrative: string;
+  metrics: string[];
+};
+
+const experience: ExperienceItem[] = [
+  {
+    company: "Zerops",
+    url: "https://zerops.io",
+    role: "Developer Advocate",
+    period: "May 2026 – Present",
+    narrative:
+      "Driving developer advocacy for Zerops, a cloud platform built for developers and their AI coding agents to build, ship, and run production apps on real infrastructure instead of local mocks. Building technical content, documentation, and community programs that help developers understand and adopt the platform.",
+    metrics: [],
+  },
   {
     company: "Optexity",
     role: "Developer Relations Engineer",
-    period: "Jan 2026 – Present",
+    period: "Jan 2026 – Apr 2026",
     narrative:
-      "Building the DevRel function from zero. Defining the content engine, community channels, and developer onboarding journey from first signup to first successful integration. Shipping tutorials, API guides, and walkthroughs while running growth campaigns across Twitter/X, Discord, and LinkedIn.",
+      "Built the DevRel function from zero. Defined the content engine, community channels, and developer onboarding journey from first signup to first successful integration. Shipped tutorials, API guides, and walkthroughs while running growth campaigns across Twitter/X, Discord, and LinkedIn.",
     metrics: [],
   },
   {
@@ -252,10 +275,51 @@ const skills = {
 const navLinks = [
   { label: "About", href: "#about" },
   { label: "Writing", href: "#writing" },
+  { label: "Videos", href: "#videos" },
   { label: "Experience", href: "#experience" },
   { label: "Skills", href: "#skills" },
   { label: "Contact", href: "#contact" },
 ];
+
+const videos = [
+  {
+    id: "_Mu2bZBo6mA",
+    title: "I Built a Daily Guessing Game with ONE Prompt using ZCP",
+  },
+  {
+    id: "Be0RIcs96RE",
+    title: "Zerops ZCP Walkthrough: Deploy, Don't Just Describe",
+  },
+];
+
+const socials = [
+  { label: "Twitter/X", href: "https://x.com/aahiknsv", Icon: Twitter },
+  { label: "LinkedIn", href: "https://linkedin.com/in/vanshikarana", Icon: Linkedin },
+  { label: "GitHub", href: "https://github.com/Vanshika-Rana", Icon: Github },
+  { label: "YouTube", href: "https://www.youtube.com/@aahiknsv", Icon: Youtube },
+];
+
+/* ================================================================
+   ANIMATION VARIANTS
+   ================================================================ */
+
+const fadeUp: Variants = {
+  hidden: { opacity: 0, y: 28 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] },
+  },
+};
+
+const stagger: Variants = {
+  hidden: {},
+  visible: {
+    transition: { staggerChildren: 0.12, delayChildren: 0.04 },
+  },
+};
+
+const viewportOnce = { once: true, margin: "-100px" };
 
 /* ================================================================
    MAIN PAGE
@@ -263,59 +327,49 @@ const navLinks = [
 
 export default function Home() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
-
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 50);
-    window.addEventListener("scroll", onScroll);
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) entry.target.classList.add("visible");
-        });
-      },
-      { threshold: 0.08, rootMargin: "0px 0px -40px 0px" }
-    );
-    document.querySelectorAll(".fade-in").forEach((el) => observer.observe(el));
-    return () => observer.disconnect();
-  }, []);
 
   return (
     <>
-      {/* ──── NAVIGATION ──── */}
-      <header
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-          scrolled
-            ? "bg-[#FAFAF7]/80 backdrop-blur-xl border-b border-stone-200/60"
-            : ""
-        }`}
+      <div className="noise-overlay" />
+
+      {/* ──── NAVIGATION (liquid glass pill) ──── */}
+      <motion.header
+        initial={{ opacity: 0, y: -16 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+        className="fixed top-4 md:top-6 left-0 right-0 z-50 px-4"
       >
-        <nav className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+        <nav className="liquid-glass max-w-3xl mx-auto rounded-full px-5 md:px-6 py-3 flex items-center justify-between">
           <Link
             href="/"
-            className="text-lg font-semibold tracking-tight text-stone-900 hover:opacity-70 transition"
+            className="font-display font-semibold text-lg text-white hover:opacity-70 transition"
           >
             VR
           </Link>
 
-          <div className="hidden md:flex items-center gap-8">
+          <div className="hidden md:flex items-center gap-7 ml-8">
             {navLinks.map((link) => (
               <a
                 key={link.href}
                 href={link.href}
-                className="text-sm text-stone-500 hover:text-stone-900 transition-colors"
+                className="text-sm text-white/70 hover:text-white transition-colors"
               >
                 {link.label}
               </a>
             ))}
           </div>
 
+          <div className="hidden md:block">
+            <a
+              href="#contact"
+              className="liquid-glass inline-flex items-center rounded-full px-5 py-2 text-sm font-medium text-white hover:bg-white/5 transition-colors"
+            >
+              Let&apos;s talk
+            </a>
+          </div>
+
           <button
-            className="md:hidden p-2 -mr-2 text-stone-500 hover:text-stone-900 transition"
+            className="md:hidden p-1 text-white/80 hover:text-white transition"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             aria-label="Toggle menu"
           >
@@ -328,106 +382,125 @@ export default function Home() {
         </nav>
 
         {mobileMenuOpen && (
-          <div className="md:hidden bg-[#FAFAF7]/95 backdrop-blur-xl border-b border-stone-200/60 px-6 pb-4">
+          <motion.div
+            initial={{ opacity: 0, y: -8 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.3 }}
+            className="liquid-glass md:hidden max-w-3xl mx-auto mt-2 rounded-2xl px-6 py-4"
+          >
             {navLinks.map((link) => (
               <a
                 key={link.href}
                 href={link.href}
-                className="block py-3 text-stone-500 hover:text-stone-900 transition-colors text-sm"
+                className="block py-2.5 text-white/70 hover:text-white transition-colors text-sm"
                 onClick={() => setMobileMenuOpen(false)}
               >
                 {link.label}
               </a>
             ))}
-          </div>
+          </motion.div>
         )}
-      </header>
+      </motion.header>
 
       <main>
         {/* ──── HERO ──── */}
-        <section className="relative pt-32 pb-16 md:pt-44 md:pb-24 px-6 overflow-hidden">
-          <div className="orb orb-pink -top-[200px] -right-[150px]" />
-          <div className="orb orb-purple top-[100px] -left-[250px]" />
-          <div className="orb orb-violet -bottom-[100px] right-[20%]" />
+        <section className="relative pt-40 pb-16 md:pt-52 md:pb-24 px-6 overflow-hidden">
+          <div className="orb orb-gold -top-[200px] -right-[150px]" />
+          <div className="orb orb-amber top-[100px] -left-[250px]" />
+          <div className="orb orb-ash -bottom-[100px] right-[20%]" />
 
-          <div className="max-w-4xl mx-auto relative z-10">
-            <div className="flex items-center gap-4 mb-8">
+          <motion.div
+            variants={stagger}
+            initial="hidden"
+            animate="visible"
+            className="max-w-4xl mx-auto relative z-10"
+          >
+            <motion.div variants={fadeUp} className="flex items-center gap-4 mb-8">
               <Image
                 src="/images/avatar.jpeg"
                 alt="Vanshika Rana"
                 width={56}
                 height={56}
-                className="rounded-full ring-2 ring-purple-200/60"
+                className="rounded-full ring-1 ring-white/15"
               />
               <div>
-                <p className="font-medium text-stone-900">Vanshika Rana</p>
-                <p className="text-sm text-stone-400">
-                  Developer Advocate &middot; Content Strategist &middot; Growth
-                  &amp; Community
+                <p className="font-medium text-white">Vanshika Rana</p>
+                <p className="text-sm text-white/40">
+                  Engineer at Heart &middot; Developer Advocate &middot; Content
+                  Strategist
                 </p>
               </div>
-            </div>
+            </motion.div>
 
-            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight leading-[1.08] mb-8 text-stone-900">
+            <motion.h1
+              variants={fadeUp}
+              className="font-display font-medium text-4xl sm:text-5xl md:text-6xl lg:text-7xl tracking-tight leading-[1.1] mb-8 text-white"
+            >
               I turn developer tools
               <br />
-              <span className="gradient-text-animated">
+              <span className="text-gold-300">
                 into adoption stories.
               </span>
-            </h1>
+            </motion.h1>
 
-            <p className="text-lg md:text-xl text-stone-500 max-w-2xl mb-10 leading-relaxed">
+            <motion.p
+              variants={fadeUp}
+              className="text-lg md:text-xl text-white/50 max-w-2xl mb-10 leading-relaxed"
+            >
               4+ years building developer programs end-to-end. From API
               documentation and SDK walkthroughs to content campaigns that drive
               awareness, funnel developers into products, and turn early adopters
               into evangelists.
-            </p>
+            </motion.p>
 
-            <div className="flex flex-wrap items-center gap-4">
-              <a
+            <motion.div variants={fadeUp} className="flex flex-wrap items-center gap-4">
+              <motion.a
+                whileHover={{ scale: 1.03 }}
+                whileTap={{ scale: 0.97 }}
                 href="#writing"
-                className="inline-flex items-center gap-2 bg-gradient-to-r from-pink-500 to-purple-600 text-white font-medium px-6 py-3 rounded-lg hover:shadow-lg hover:shadow-purple-500/20 transition-all duration-300 hover:-translate-y-0.5"
+                className="inline-flex items-center gap-2 bg-white text-black font-medium px-6 py-3 rounded-full transition-colors hover:bg-white/90"
               >
                 See my work
                 <ChevronDown className="w-4 h-4" />
-              </a>
-              <a
+              </motion.a>
+              <motion.a
+                whileHover={{ scale: 1.03 }}
+                whileTap={{ scale: 0.97 }}
                 href="#contact"
-                className="inline-flex items-center gap-2 bg-white border border-stone-200 text-stone-700 px-6 py-3 rounded-lg hover:border-purple-300 hover:bg-purple-50/30 transition-all duration-300"
+                className="liquid-glass inline-flex items-center gap-2 text-white px-6 py-3 rounded-full hover:bg-white/5 transition-colors"
               >
                 Get in touch
                 <ArrowUpRight className="w-4 h-4" />
-              </a>
-            </div>
+              </motion.a>
+            </motion.div>
 
-            <div className="flex items-center gap-6 mt-10">
-              {[
-                { label: "Twitter/X", href: "https://x.com/aahiknsv" },
-                {
-                  label: "LinkedIn",
-                  href: "https://linkedin.com/in/vanshikarana",
-                },
-                {
-                  label: "GitHub",
-                  href: "https://github.com/Vanshika-Rana",
-                },
-              ].map((s) => (
-                <Link
+            <motion.div variants={fadeUp} className="flex items-center gap-3 mt-10">
+              {socials.map((s) => (
+                <motion.a
                   key={s.label}
+                  whileHover={{ scale: 1.08 }}
+                  whileTap={{ scale: 0.94 }}
                   href={s.href}
                   target="_blank"
-                  className="text-sm text-stone-400 hover:text-purple-600 transition-colors"
+                  aria-label={s.label}
+                  className="liquid-glass inline-flex items-center justify-center rounded-full p-3 text-white/70 hover:text-white transition-colors"
                 >
-                  {s.label}
-                </Link>
+                  <s.Icon className="w-4 h-4" />
+                </motion.a>
               ))}
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
         </section>
 
         {/* ──── STATS ──── */}
         <section className="px-6 pb-20 md:pb-28">
-          <div className="max-w-6xl mx-auto">
+          <motion.div
+            variants={stagger}
+            initial="hidden"
+            whileInView="visible"
+            viewport={viewportOnce}
+            className="max-w-6xl mx-auto"
+          >
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
               {[
                 { value: "4+", label: "Years in DevRel & content" },
@@ -435,38 +508,58 @@ export default function Home() {
                 { value: "20+", label: "Technical guides published" },
                 { value: "12+", label: "International events" },
               ].map((stat, i) => (
-                <div
+                <motion.div
                   key={i}
-                  className="fade-in shimmer text-center p-6 md:p-8 rounded-2xl bg-white border border-stone-200/80 card-hover"
+                  variants={fadeUp}
+                  whileHover={{ y: -4 }}
+                  className="liquid-glass text-center p-6 md:p-8 rounded-2xl card-hover"
                 >
-                  <div className="text-3xl md:text-4xl font-bold bg-gradient-to-br from-pink-500 to-purple-600 bg-clip-text text-transparent mb-2">
+                  <div className="font-display font-medium text-3xl md:text-4xl text-gold-300 mb-2">
                     {stat.value}
                   </div>
-                  <div className="text-xs md:text-sm text-stone-400">
+                  <div className="text-xs md:text-sm text-white/40">
                     {stat.label}
                   </div>
-                </div>
+                </motion.div>
               ))}
             </div>
-          </div>
+          </motion.div>
         </section>
 
         {/* ──── ABOUT ──── */}
-        <section id="about" className="px-6 py-20 md:py-28 scroll-mt-24">
-          <div className="max-w-4xl mx-auto fade-in">
-            <SectionLabel>About</SectionLabel>
-            <h2 className="text-3xl md:text-4xl font-bold mb-10 text-stone-900">
-              A quick intro
-            </h2>
+        <section
+          id="about"
+          className="relative px-6 py-20 md:py-28 scroll-mt-24 overflow-hidden"
+        >
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_rgba(255,255,255,0.04)_0%,_transparent_70%)] pointer-events-none" />
+          <motion.div
+            variants={stagger}
+            initial="hidden"
+            whileInView="visible"
+            viewport={viewportOnce}
+            className="max-w-4xl mx-auto relative z-10"
+          >
+            <motion.div variants={fadeUp}>
+              <SectionLabel>About</SectionLabel>
+            </motion.div>
+            <motion.h2
+              variants={fadeUp}
+              className="font-display font-medium text-3xl md:text-4xl mb-10 text-white"
+            >
+              A quick <span className="text-white/50">intro</span>
+            </motion.h2>
 
             <div className="grid md:grid-cols-2 gap-10 md:gap-14">
-              <div className="space-y-5 text-stone-500 leading-relaxed">
+              <motion.div variants={fadeUp} className="space-y-5 text-white/55 leading-relaxed">
                 <p>
-                  I sit at the intersection of code, content, and community.
-                  Most of my work starts with the same question: how do you take
-                  something technically complex and make developers actually want
-                  to use it? I&apos;ve spent the last 4+ years answering that,
-                  across AI tooling, payment infrastructure, and Web3.
+                  I&apos;m an engineer at heart. I studied Computer Science and
+                  still think in systems, not sentences. But somewhere along
+                  the way I realized my real edge wasn&apos;t just building
+                  things, it was explaining them. That&apos;s what pulled me
+                  into developer advocacy: taking something technically complex
+                  and making developers actually want to use it. I&apos;ve
+                  spent the last 4+ years doing exactly that, across AI
+                  tooling, payment infrastructure, and Web3.
                 </p>
                 <p>
                   I&apos;m equally comfortable writing a Python SDK walkthrough,
@@ -474,106 +567,120 @@ export default function Home() {
                   conference stage explaining why your product matters. I care
                   about clarity, speed, and hitting publish.
                 </p>
-              </div>
-              <div className="space-y-5 text-stone-500 leading-relaxed">
+              </motion.div>
+              <motion.div variants={fadeUp} className="space-y-5 text-white/55 leading-relaxed">
                 <p>
-                  Computer Science background (B.E., Vel Tech High Tech,
-                  Chennai, 2022). I think in systems: content pipelines,
-                  developer funnels, feedback loops. I like building things
-                  that explain themselves and spread on their own.
+                  B.E. in Computer Science (Vel Tech High Tech, Chennai, 2022).
+                  Content pipelines, developer funnels, feedback loops: I like
+                  building things that explain themselves and spread on their
+                  own.
                 </p>
                 <p>
-                  Right now I&apos;m at Optexity, building their DevRel function
-                  from scratch. Before that I shipped content programs at Payman,
-                  Upsurge Labs, Instadapp, and Valist. When I&apos;m not writing
-                  docs, I&apos;m prototyping AI tools or figuring out how to
-                  make the next campaign impossible to ignore.
+                  Right now I&apos;m at Zerops, working as a Developer
+                  Advocate. Before that I built the DevRel function from
+                  scratch at Optexity, and shipped content programs at Payman,
+                  Upsurge Labs, Instadapp, and Valist. When I&apos;m not
+                  writing docs, I&apos;m prototyping AI tools or figuring out
+                  how to make the next campaign impossible to ignore.
                 </p>
-              </div>
+              </motion.div>
             </div>
-          </div>
+          </motion.div>
         </section>
 
         {/* ──── WRITING / CONTENT ──── */}
         <section
           id="writing"
-          className="relative px-6 py-20 md:py-28 scroll-mt-24 bg-white overflow-hidden"
+          className="relative px-6 py-20 md:py-28 scroll-mt-24 overflow-hidden"
         >
-          <div className="orb orb-purple opacity-40 -top-[300px] right-[10%]" />
+          <div className="orb orb-amber opacity-60 -top-[300px] right-[10%]" />
 
-          <div className="max-w-6xl mx-auto relative z-10">
-            <div className="fade-in">
+          <motion.div
+            variants={stagger}
+            initial="hidden"
+            whileInView="visible"
+            viewport={viewportOnce}
+            className="max-w-6xl mx-auto relative z-10"
+          >
+            <motion.div variants={fadeUp}>
               <SectionLabel>Writing</SectionLabel>
-              <h2 className="text-3xl md:text-4xl font-bold mb-4 text-stone-900">
-                Published work
+              <h2 className="font-display font-medium text-3xl md:text-4xl mb-4 text-white">
+                Published <span className="text-white/50">work</span>
               </h2>
-              <p className="text-stone-500 max-w-2xl mb-12 leading-relaxed">
+              <p className="text-white/50 max-w-2xl mb-12 leading-relaxed">
                 Technical articles, opinion pieces, how-to guides, and
                 tutorials across BrainGrid, Medium, and Hashnode.
               </p>
-            </div>
+            </motion.div>
 
             {/* Newsletter highlight */}
-            <div className="fade-in mb-10">
+            <motion.div variants={fadeUp} className="mb-10">
               <Link
                 href="https://www.linkedin.com/build-relation/newsletter-follow?entityUrn=7433169551997018112"
                 target="_blank"
-                className="group block p-6 md:p-8 rounded-2xl bg-gradient-to-br from-pink-50 via-purple-50 to-violet-50 border border-purple-200/60 hover:border-purple-300 hover:shadow-lg hover:shadow-purple-500/10 transition-all duration-300"
+                className="liquid-glass group block p-6 md:p-8 rounded-2xl hover:bg-white/[0.05] transition-colors duration-300"
               >
                 <div className="flex items-center justify-between gap-4">
                   <div>
                     <div className="flex items-center gap-2 mb-2">
-                      <Newspaper className="w-4 h-4 text-purple-600" />
-                      <span className="text-xs font-medium text-purple-600 uppercase tracking-wider">
+                      <Newspaper className="w-4 h-4 text-gold-300" />
+                      <span className="text-xs font-medium text-gold-300 uppercase tracking-wider">
                         Newsletter
                       </span>
                     </div>
-                    <h3 className="text-xl md:text-2xl font-semibold text-stone-900 mb-1">
+                    <h3 className="font-display font-medium text-xl md:text-2xl text-white mb-1">
                       Optexity Newsletter
                     </h3>
-                    <p className="text-stone-500 text-sm md:text-base">
+                    <p className="text-white/50 text-sm md:text-base">
                       Subscribe on LinkedIn for developer advocacy insights, AI
                       tooling updates, and content strategy breakdowns.
                     </p>
                   </div>
-                  <ArrowUpRight className="w-6 h-6 text-stone-400 group-hover:text-purple-600 transition-colors shrink-0" />
+                  <ArrowUpRight className="w-6 h-6 text-white/40 group-hover:text-gold-300 transition-colors shrink-0" />
                 </div>
               </Link>
-            </div>
+            </motion.div>
 
             {/* Articles grid */}
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+            <motion.div
+              variants={stagger}
+              className="grid md:grid-cols-2 lg:grid-cols-3 gap-5"
+            >
               {articles.map((article, i) => (
-                <Link
-                  key={i}
-                  href={article.url}
-                  target="_blank"
-                  className="fade-in group gradient-border card-hover p-6 rounded-2xl bg-[#FAFAF7] border border-stone-200/80 flex flex-col"
-                >
-                  <div className="flex items-center gap-2 mb-3">
-                    <span className="text-[11px] font-medium px-2.5 py-0.5 rounded-full bg-purple-50 text-purple-600 border border-purple-100">
-                      {article.category}
-                    </span>
-                    <span className="text-[11px] text-stone-400">
-                      {article.readTime}
-                    </span>
-                  </div>
-                  <h3 className="font-semibold mb-2 text-stone-900 group-hover:text-purple-700 transition-colors leading-snug text-[15px]">
-                    {article.title}
-                  </h3>
-                  <p className="text-sm text-stone-400 mb-4 flex-1 line-clamp-2 leading-relaxed">
-                    {article.description}
-                  </p>
-                  <div className="flex items-center justify-between text-xs text-stone-400">
-                    <span>{article.publication}</span>
-                    <span>{article.date}</span>
-                  </div>
-                </Link>
+                <motion.div key={i} variants={fadeUp} whileHover={{ y: -4 }}>
+                  <Link
+                    href={article.url}
+                    target="_blank"
+                    className="group card-hover liquid-glass p-6 rounded-2xl flex flex-col h-full hover:bg-white/[0.05] transition-colors"
+                  >
+                    <div className="flex items-center gap-2 mb-3">
+                      <span className="text-[11px] font-medium px-2.5 py-0.5 rounded-full border border-white/10 text-gold-300">
+                        {article.category}
+                      </span>
+                      <span className="text-[11px] text-white/40">
+                        {article.readTime}
+                      </span>
+                    </div>
+                    <h3 className="font-semibold mb-2 text-white group-hover:text-gold-300 transition-colors leading-snug text-[15px]">
+                      {article.title}
+                    </h3>
+                    <p className="text-sm text-white/40 mb-4 flex-1 line-clamp-2 leading-relaxed">
+                      {article.description}
+                    </p>
+                    <div className="flex items-center justify-between text-xs text-white/40">
+                      <span>{article.publication}</span>
+                      <span>{article.date}</span>
+                    </div>
+                  </Link>
+                </motion.div>
               ))}
-            </div>
+            </motion.div>
 
             {/* External links */}
-            <div className="mt-8 fade-in flex flex-wrap gap-3 justify-center">
+            <motion.div
+              variants={fadeUp}
+              className="mt-8 flex flex-wrap gap-3 justify-center"
+            >
               {[
                 {
                   label: "More on Hashnode",
@@ -588,44 +695,130 @@ export default function Home() {
                   key={link.label}
                   href={link.href}
                   target="_blank"
-                  className="inline-flex items-center gap-2 text-sm text-stone-500 hover:text-purple-600 transition-colors px-4 py-2.5 rounded-xl bg-[#FAFAF7] border border-stone-200/80 hover:border-purple-200"
+                  className="liquid-glass inline-flex items-center gap-2 text-sm text-white/60 hover:text-white transition-colors px-4 py-2.5 rounded-xl"
                 >
                   {link.label}
                   <ArrowUpRight className="w-3.5 h-3.5" />
                 </Link>
               ))}
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
+        </section>
+
+        {/* ──── VIDEOS ──── */}
+        <section
+          id="videos"
+          className="relative px-6 py-20 md:py-28 scroll-mt-24 overflow-hidden"
+        >
+          <div className="orb orb-gold opacity-40 top-[10%] -right-[200px]" />
+
+          <motion.div
+            variants={stagger}
+            initial="hidden"
+            whileInView="visible"
+            viewport={viewportOnce}
+            className="max-w-6xl mx-auto relative z-10"
+          >
+            <motion.div variants={fadeUp}>
+              <SectionLabel>Videos</SectionLabel>
+              <h2 className="font-display font-medium text-3xl md:text-4xl mb-4 text-white">
+                On <span className="text-white/50">YouTube</span>
+              </h2>
+              <p className="text-white/50 max-w-2xl mb-12 leading-relaxed">
+                I&apos;ve started making videos too, walkthroughs, builds, and
+                behind-the-scenes of what I&apos;m shipping.
+              </p>
+            </motion.div>
+
+            <motion.div
+              variants={stagger}
+              className="grid md:grid-cols-2 gap-6"
+            >
+              {videos.map((video) => (
+                <motion.div
+                  key={video.id}
+                  variants={fadeUp}
+                  whileHover={{ y: -4 }}
+                  className="liquid-glass card-hover rounded-2xl overflow-hidden"
+                >
+                  <div className="aspect-video">
+                    <iframe
+                      className="w-full h-full"
+                      src={`https://www.youtube.com/embed/${video.id}`}
+                      title={video.title}
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                      referrerPolicy="strict-origin-when-cross-origin"
+                      allowFullScreen
+                    />
+                  </div>
+                  <div className="p-5">
+                    <h3 className="font-medium text-white text-[15px] leading-snug">
+                      {video.title}
+                    </h3>
+                  </div>
+                </motion.div>
+              ))}
+            </motion.div>
+
+            <motion.div variants={fadeUp} className="mt-8 flex justify-center">
+              <Link
+                href="https://www.youtube.com/@aahiknsv"
+                target="_blank"
+                className="liquid-glass inline-flex items-center gap-2 text-sm text-white/70 hover:text-white transition-colors px-5 py-2.5 rounded-full"
+              >
+                <Youtube className="w-4 h-4" />
+                Subscribe on YouTube
+                <ArrowUpRight className="w-3.5 h-3.5" />
+              </Link>
+            </motion.div>
+          </motion.div>
         </section>
 
         {/* ──── EXPERIENCE ──── */}
         <section id="experience" className="px-6 py-20 md:py-28 scroll-mt-24">
-          <div className="max-w-5xl mx-auto">
-            <div className="fade-in">
+          <motion.div
+            variants={stagger}
+            initial="hidden"
+            whileInView="visible"
+            viewport={viewportOnce}
+            className="max-w-5xl mx-auto"
+          >
+            <motion.div variants={fadeUp}>
               <SectionLabel>Experience</SectionLabel>
-              <h2 className="text-3xl md:text-4xl font-bold mb-14 text-stone-900">
-                Where I&apos;ve made impact
+              <h2 className="font-display font-medium text-3xl md:text-4xl mb-14 text-white">
+                Where I&apos;ve made <span className="text-white/50">impact</span>
               </h2>
-            </div>
+            </motion.div>
 
             <div className="space-y-10">
               {experience.map((job, i) => (
-                <div key={i} className="fade-in group">
+                <motion.div key={i} variants={fadeUp} className="group">
                   <div className="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-1 mb-3">
                     <div className="flex items-baseline gap-3">
-                      <h3 className="text-xl md:text-2xl font-semibold text-stone-900">
-                        {job.company}
+                      <h3 className="font-display font-medium text-xl md:text-2xl text-white">
+                        {job.url ? (
+                          <Link
+                            href={job.url}
+                            target="_blank"
+                            className="inline-flex items-baseline gap-1 hover:text-gold-300 transition-colors"
+                          >
+                            {job.company}
+                            <ArrowUpRight className="w-3.5 h-3.5 self-center" />
+                          </Link>
+                        ) : (
+                          job.company
+                        )}
                       </h3>
-                      <span className="text-sm text-purple-600 font-medium">
+                      <span className="text-sm text-gold-300 font-medium">
                         {job.role}
                       </span>
                     </div>
-                    <span className="text-sm text-stone-400 shrink-0">
+                    <span className="text-sm text-white/40 shrink-0">
                       {job.period}
                     </span>
                   </div>
 
-                  <p className="text-stone-500 leading-relaxed mb-4 max-w-3xl">
+                  <p className="text-white/55 leading-relaxed mb-4 max-w-3xl">
                     {job.narrative}
                   </p>
 
@@ -634,7 +827,7 @@ export default function Home() {
                       {job.metrics.map((m, j) => (
                         <span
                           key={j}
-                          className="text-xs font-medium px-3 py-1.5 rounded-full bg-gradient-to-r from-pink-50 to-purple-50 text-purple-700 border border-purple-100/80"
+                          className="liquid-glass text-xs font-medium px-3 py-1.5 rounded-full text-gold-300"
                         >
                           {m}
                         </span>
@@ -643,70 +836,86 @@ export default function Home() {
                   )}
 
                   {i < experience.length - 1 && (
-                    <div className="mt-10 border-b border-stone-200/60" />
+                    <div className="mt-10 border-b border-white/10" />
                   )}
-                </div>
+                </motion.div>
               ))}
             </div>
 
             {/* Community roles */}
-            <div className="mt-16 fade-in">
-              <h3 className="text-xs font-semibold text-stone-400 mb-6 tracking-wider uppercase">
+            <motion.div variants={fadeUp} className="mt-16">
+              <h3 className="text-xs font-semibold text-white/40 mb-6 tracking-wider uppercase">
                 Leadership &amp; Community
               </h3>
               <div className="grid md:grid-cols-2 gap-5">
                 {communityRoles.map((role, i) => (
                   <div
                     key={i}
-                    className="p-6 rounded-2xl bg-white border border-stone-200/80 card-hover"
+                    className="liquid-glass p-6 rounded-2xl card-hover"
                   >
                     <div className="flex items-start justify-between mb-3">
                       <div>
-                        <h4 className="font-semibold text-stone-900">
+                        <h4 className="font-semibold text-white">
                           {role.org}
                         </h4>
-                        <p className="text-sm text-purple-600">{role.role}</p>
+                        <p className="text-sm text-gold-300">{role.role}</p>
                       </div>
-                      <span className="text-xs text-stone-400 shrink-0 ml-4">
+                      <span className="text-xs text-white/40 shrink-0 ml-4">
                         {role.period}
                       </span>
                     </div>
-                    <p className="text-sm text-stone-500 leading-relaxed">
+                    <p className="text-sm text-white/55 leading-relaxed">
                       {role.narrative}
                     </p>
                   </div>
                 ))}
               </div>
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
         </section>
 
         {/* ──── SKILLS ──── */}
         <section
           id="skills"
-          className="relative px-6 py-20 md:py-28 scroll-mt-24 bg-white overflow-hidden"
+          className="relative px-6 py-20 md:py-28 scroll-mt-24 overflow-hidden"
         >
-          <div className="orb orb-pink opacity-30 -bottom-[200px] -left-[200px]" />
+          <div className="orb orb-gold opacity-50 -bottom-[200px] -left-[200px]" />
 
-          <div className="max-w-6xl mx-auto relative z-10 fade-in">
-            <SectionLabel>Skills &amp; Expertise</SectionLabel>
-            <h2 className="text-3xl md:text-4xl font-bold mb-12 text-stone-900">
-              What I bring to the table
-            </h2>
+          <motion.div
+            variants={stagger}
+            initial="hidden"
+            whileInView="visible"
+            viewport={viewportOnce}
+            className="max-w-6xl mx-auto relative z-10"
+          >
+            <motion.div variants={fadeUp}>
+              <SectionLabel>Skills &amp; Expertise</SectionLabel>
+              <h2 className="font-display font-medium text-3xl md:text-4xl mb-12 text-white">
+                What I bring to the <span className="text-white/50">table</span>
+              </h2>
+            </motion.div>
 
             <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
-              <SkillCategory title="Technical" items={skills.technical} />
-              <SkillCategory
-                title="Content & Marketing"
-                items={skills.contentMarketing}
-              />
-              <SkillCategory
-                title="DevRel & Community"
-                items={skills.devrelCommunity}
-              />
-              <SkillCategory title="Tools" items={skills.tools} />
+              <motion.div variants={fadeUp}>
+                <SkillCategory title="Technical" items={skills.technical} />
+              </motion.div>
+              <motion.div variants={fadeUp}>
+                <SkillCategory
+                  title="Content & Marketing"
+                  items={skills.contentMarketing}
+                />
+              </motion.div>
+              <motion.div variants={fadeUp}>
+                <SkillCategory
+                  title="DevRel & Community"
+                  items={skills.devrelCommunity}
+                />
+              </motion.div>
+              <motion.div variants={fadeUp}>
+                <SkillCategory title="Tools" items={skills.tools} />
+              </motion.div>
             </div>
-          </div>
+          </motion.div>
         </section>
 
         {/* ──── CONTACT ──── */}
@@ -714,56 +923,62 @@ export default function Home() {
           id="contact"
           className="relative px-6 py-20 md:py-28 scroll-mt-24 overflow-hidden"
         >
-          <div className="orb orb-violet opacity-30 top-[10%] right-[5%]" />
-          <div className="orb orb-pink opacity-20 bottom-[10%] left-[10%]" />
+          <div className="orb orb-ash opacity-70 top-[10%] right-[5%]" />
+          <div className="orb orb-amber opacity-40 bottom-[10%] left-[10%]" />
 
-          <div className="max-w-3xl mx-auto text-center fade-in relative z-10">
-            <SectionLabel>Contact</SectionLabel>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 text-stone-900 leading-tight">
-              Let&apos;s work together.
-            </h2>
-            <p className="text-stone-500 text-lg mb-10 leading-relaxed">
+          <motion.div
+            variants={stagger}
+            initial="hidden"
+            whileInView="visible"
+            viewport={viewportOnce}
+            className="max-w-3xl mx-auto text-center relative z-10"
+          >
+            <motion.div variants={fadeUp}>
+              <SectionLabel>Contact</SectionLabel>
+            </motion.div>
+            <motion.h2
+              variants={fadeUp}
+              className="font-display font-medium text-3xl sm:text-4xl md:text-5xl mb-6 text-white leading-tight"
+            >
+              Let&apos;s work <span className="text-gold-300">together.</span>
+            </motion.h2>
+            <motion.p variants={fadeUp} className="text-white/50 text-lg mb-10 leading-relaxed">
               Looking for a content strategist who understands developers and can
               drive real adoption? I&apos;d love to hear from you.
-            </p>
+            </motion.p>
 
-            <Link
-              href="mailto:ranavanshika172000@gmail.com"
-              className="inline-flex items-center gap-2.5 bg-gradient-to-r from-pink-500 to-purple-600 text-white font-medium px-8 py-3.5 rounded-lg hover:shadow-lg hover:shadow-purple-500/25 transition-all duration-300 hover:-translate-y-0.5 text-base"
-            >
-              <Mail className="w-5 h-5" />
-              ranavanshika172000@gmail.com
-            </Link>
+            <motion.div variants={fadeUp} whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}>
+              <Link
+                href="mailto:ranavanshika172000@gmail.com"
+                className="inline-flex items-center gap-2.5 bg-white text-black font-medium px-8 py-3.5 rounded-full hover:bg-white/90 transition-colors text-base"
+              >
+                <Mail className="w-5 h-5" />
+                ranavanshika172000@gmail.com
+              </Link>
+            </motion.div>
 
-            <div className="flex items-center justify-center gap-8 mt-10">
-              {[
-                { label: "Twitter/X", href: "https://x.com/aahiknsv" },
-                {
-                  label: "LinkedIn",
-                  href: "https://linkedin.com/in/vanshikarana",
-                },
-                {
-                  label: "GitHub",
-                  href: "https://github.com/Vanshika-Rana",
-                },
-              ].map((s) => (
-                <Link
+            <motion.div variants={fadeUp} className="flex items-center justify-center gap-3 mt-10">
+              {socials.map((s) => (
+                <motion.a
                   key={s.label}
+                  whileHover={{ scale: 1.08 }}
+                  whileTap={{ scale: 0.94 }}
                   href={s.href}
                   target="_blank"
-                  className="text-sm text-stone-400 hover:text-purple-600 transition-colors"
+                  aria-label={s.label}
+                  className="liquid-glass inline-flex items-center justify-center rounded-full p-3 text-white/70 hover:text-white transition-colors"
                 >
-                  {s.label}
-                </Link>
+                  <s.Icon className="w-4 h-4" />
+                </motion.a>
               ))}
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
         </section>
       </main>
 
       {/* ──── FOOTER ──── */}
-      <footer className="px-6 py-8 border-t border-stone-200/60">
-        <div className="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-stone-400">
+      <footer className="px-6 py-8 border-t border-white/10">
+        <div className="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-white/30">
           <span>&copy; {new Date().getFullYear()} Vanshika Rana</span>
           <span>Built with Next.js &amp; Tailwind</span>
         </div>
@@ -780,7 +995,7 @@ function SectionLabel({ children }: { children: React.ReactNode }) {
   return (
     <div className="flex items-center gap-3 mb-4">
       <span className="accent-line" />
-      <span className="text-sm font-medium bg-gradient-to-r from-pink-500 to-purple-600 bg-clip-text text-transparent tracking-wide">
+      <span className="text-sm font-medium text-white/40 tracking-widest uppercase">
         {children}
       </span>
     </div>
@@ -789,15 +1004,15 @@ function SectionLabel({ children }: { children: React.ReactNode }) {
 
 function SkillCategory({ title, items }: { title: string; items: string[] }) {
   return (
-    <div className="p-6 rounded-2xl bg-[#FAFAF7] border border-stone-200/80 card-hover">
-      <h3 className="font-semibold mb-4 text-xs bg-gradient-to-r from-pink-500 to-purple-600 bg-clip-text text-transparent uppercase tracking-wider">
+    <div className="liquid-glass p-6 rounded-2xl card-hover h-full">
+      <h3 className="font-semibold mb-4 text-xs text-gold-300 uppercase tracking-wider">
         {title}
       </h3>
       <div className="flex flex-wrap gap-2">
         {items.map((item) => (
           <span
             key={item}
-            className="text-xs px-3 py-1.5 rounded-full bg-white text-stone-600 border border-stone-200/80 hover:border-purple-200 hover:text-purple-700 transition-colors cursor-default"
+            className="text-xs px-3 py-1.5 rounded-full border border-white/10 text-white/60 hover:border-gold-400/40 hover:text-gold-300 transition-colors cursor-default"
           >
             {item}
           </span>
