@@ -9,22 +9,16 @@ const config: Config = {
   theme: {
     extend: {
       fontFamily: {
-        sans: ["var(--font-nunito)", "system-ui", "sans-serif"],
-        display: ["var(--font-space-grotesk)", "system-ui", "sans-serif"],
+        sans: ["var(--font-grotesk)", "system-ui", "sans-serif"],
+        mono: ["var(--font-mono)", "ui-monospace", "monospace"],
       },
       colors: {
-        gold: {
-          50: "#FBF7EE",
-          100: "#F5EAD3",
-          200: "#EAD4A8",
-          300: "#DCBB7C",
-          400: "#CDA05A",
-          500: "#BA8940",
-          600: "#9C7133",
-          700: "#7D5A29",
-          800: "#5F451F",
-          900: "#4A3618",
-        },
+        void: "#08080a",
+        stage: "#101013",
+        edge: "#26262c",
+        bone: "#f2f0ea",
+        ash: "#8b887f",
+        signal: "#ff4f1f",
       },
     },
   },

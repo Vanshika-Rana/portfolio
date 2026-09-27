@@ -1,26 +1,27 @@
 import type { Metadata } from "next";
-import { Nunito, Space_Grotesk } from "next/font/google";
+import { JetBrains_Mono, Schibsted_Grotesk } from "next/font/google";
 import "./globals.css";
 
-const nunito = Nunito({
-  subsets: ["latin"],
-  display: "swap",
-  variable: "--font-nunito",
-});
-
-const spaceGrotesk = Space_Grotesk({
+const grotesk = Schibsted_Grotesk({
   subsets: ["latin"],
   display: "swap",
   weight: ["400", "500", "600", "700"],
-  variable: "--font-space-grotesk",
+  variable: "--font-grotesk",
+});
+
+const mono = JetBrains_Mono({
+  subsets: ["latin"],
+  display: "swap",
+  weight: ["400", "500"],
+  variable: "--font-mono",
 });
 
 export const metadata: Metadata = {
-  title: "Vanshika Rana | Developer Advocate at Zerops",
+  title: "Vanshika Rana | Developer Relations and Forward Deployed Engineer",
   description:
-    "Engineer at heart turned Developer Advocate at Zerops. 4+ years turning complex tech into content that drives developer adoption, from API docs and SDK walkthroughs to growth campaigns.",
+    "Developer Relations Engineer and Forward Deployed Engineer with 4+ years at the intersection of code, community, and the codebase. API docs, SDK walkthroughs, demos, and programs that drive developer adoption.",
   openGraph: {
-    title: "Vanshika Rana | Developer Advocate at Zerops",
+    title: "Vanshika Rana | Developer Relations and Forward Deployed Engineer",
     description:
       "I turn developer tools into adoption stories. 4+ years of DevRel, content strategy, and community building.",
     type: "website",
@@ -33,10 +34,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className="scroll-smooth">
-      <body
-        className={`${nunito.variable} ${spaceGrotesk.variable} font-sans bg-[#0a0a0a] text-stone-50 antialiased`}
-      >
+    <html lang="en" className={`${grotesk.variable} ${mono.variable}`}>
+      <body className="bg-void font-sans text-bone antialiased">
         {children}
       </body>
     </html>
