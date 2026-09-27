@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { JetBrains_Mono, Schibsted_Grotesk } from "next/font/google";
 import "./globals.css";
 
@@ -16,16 +16,59 @@ const mono = JetBrains_Mono({
   variable: "--font-mono",
 });
 
+const title = "Vanshika Rana | Developer Relations and Forward Deployed Engineer";
+const description =
+  "Developer Relations Engineer and Forward Deployed Engineer with 4+ years at the intersection of code, community, and the codebase. API docs, SDK walkthroughs, demos, and programs that drive developer adoption.";
+const social =
+  "I turn developer tools into adoption stories. Four years of reading the code, shipping the demo, and writing the docs.";
+
 export const metadata: Metadata = {
-  title: "Vanshika Rana | Developer Relations and Forward Deployed Engineer",
-  description:
-    "Developer Relations Engineer and Forward Deployed Engineer with 4+ years at the intersection of code, community, and the codebase. API docs, SDK walkthroughs, demos, and programs that drive developer adoption.",
+  metadataBase: new URL("https://van.codes"),
+  title,
+  description,
+  applicationName: "Vanshika Rana",
+  authors: [{ name: "Vanshika Rana", url: "https://van.codes" }],
+  creator: "Vanshika Rana",
+  keywords: [
+    "Vanshika Rana",
+    "Developer Relations Engineer",
+    "Forward Deployed Engineer",
+    "DevRel",
+    "Developer Advocate",
+    "developer experience",
+    "API documentation",
+    "technical writing",
+    "developer community",
+  ],
+  alternates: { canonical: "/" },
   openGraph: {
-    title: "Vanshika Rana | Developer Relations and Forward Deployed Engineer",
-    description:
-      "I turn developer tools into adoption stories. 4+ years of DevRel, content strategy, and community building.",
-    type: "website",
+    type: "profile",
+    url: "/",
+    siteName: "Vanshika Rana",
+    locale: "en_US",
+    title,
+    description: social,
+    firstName: "Vanshika",
+    lastName: "Rana",
+    username: "aahiknsv",
   },
+  twitter: {
+    card: "summary_large_image",
+    title,
+    description: social,
+    site: "@aahiknsv",
+    creator: "@aahiknsv",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: { index: true, follow: true, "max-image-preview": "large" },
+  },
+};
+
+export const viewport: Viewport = {
+  themeColor: "#08080a",
+  colorScheme: "dark",
 };
 
 export default function RootLayout({

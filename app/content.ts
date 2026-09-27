@@ -30,6 +30,7 @@ export const profile = {
   location: "India",
   availability: "Open to DevRel and FDE roles, global and remote",
   portrait: "/images/avatar.jpeg",
+  resume: { href: "/vanshika-rana-resume.pdf", file: "Vanshika-Rana-Resume.pdf" },
   education:
     "BE Computer Science, Vel Tech High Tech, Chennai. CGPA 8.3, 2022.",
 };

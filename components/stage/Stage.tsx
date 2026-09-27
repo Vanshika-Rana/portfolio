@@ -83,12 +83,26 @@ export function Stage({ portrait }: { portrait: boolean }) {
           <p className="font-mono text-[11px] uppercase tracking-[0.3em] text-ash">
             {profile.name}
           </p>
-          <span className="flex items-baseline gap-5">
+          <span className="flex items-center gap-4 sm:gap-5">
             <span className="hidden font-mono text-[11px] text-ash lg:inline">
               {profile.location}
               <span className="mx-2 text-edge">/</span>
               {profile.availability}
             </span>
+            <a
+              href={profile.resume.href}
+              download={profile.resume.file}
+              aria-label="Download resume as PDF"
+              className="group flex min-h-[44px] items-center gap-2 font-mono text-[11px] uppercase tracking-[0.18em] text-ash transition-colors duration-300 hover:text-bone"
+            >
+              Resume
+              <span
+                aria-hidden="true"
+                className="text-signal transition-transform duration-300 group-hover:translate-y-0.5"
+              >
+                &darr;
+              </span>
+            </a>
             <button
               type="button"
               aria-pressed={sound}
