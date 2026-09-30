@@ -33,6 +33,10 @@ export const profile = {
   resume: { href: "/vanshika-rana-resume.pdf", file: "Vanshika-Rana-Resume.pdf" },
   education:
     "BE Computer Science, Vel Tech High Tech, Chennai. CGPA 8.3, 2022.",
+  fractional: {
+    href: "https://fractional.van.codes",
+    label: "Hire me fractionally",
+  },
 };
 
 export const figures = [

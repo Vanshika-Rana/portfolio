@@ -43,6 +43,20 @@ export function Now({ portrait }: { portrait: boolean }) {
           <p className="mt-5 font-mono text-[11px] uppercase tracking-[0.18em] text-ash">
             {profile.education}
           </p>
+          <a
+            href={profile.fractional.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group mt-5 inline-flex min-h-[44px] items-center gap-2.5 bg-signal px-5 font-mono text-[12px] uppercase tracking-[0.2em] text-void transition-colors duration-300 hover:bg-bone"
+          >
+            {profile.fractional.label}
+            <span
+              aria-hidden="true"
+              className="text-[15px] leading-none transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+            >
+              &#8599;
+            </span>
+          </a>
         </div>
 
         <dl className="grid grid-cols-2 gap-x-6 gap-y-5 border-t border-edge pt-5 sm:grid-cols-4 lg:order-3 lg:col-span-2">
